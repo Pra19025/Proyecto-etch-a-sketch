@@ -9,8 +9,7 @@
 ;   Description:	    Proyecto 2 etch a sketch
 ;
 ;*******************************************************************************  
-    ;probando git
-    ;probando git por segunda vez
+
     #include "p16f887.inc"
 
 ; CONFIG1
@@ -21,14 +20,16 @@
     __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
     
     GPR_VAR	    UDATA
-RESULTHI	    RES 1
-RESULTLO    RES 1
 DEL	    RES 1
 NIBBLE_H	    RES 1
 NIBBLE_L	    RES 1
 BANDERAS    RES 1
 STATUS_TEMP RES 1
  W_TEMP	    RES 1
+NIBBLE_L2   RES 1
+NIBBLE_H2   RES 1
+VAR_GENERAL1	RES 1
+VAR_GENERAL2	RES 1
 
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -46,7 +47,7 @@ ISR:
     BCF	PIR1, ADIF
     BANKSEL ADRESH	     
     MOVF ADRESH,W		;GUARDAR 8 BITS EN RESULTHI
-    MOVWF RESULTHI
+    MOVWF VAR_GENERAL1
     
 POP:
     SWAPF	    STATUS_TEMP, W
@@ -83,12 +84,166 @@ MAIN_PROG CODE                      ; let linker place main program
  
 START
  
-; CALL	CONFIG_IO   
- ;CALL	CONFIG_INTERRUPT
+CALL	CONFIG_IO   
+CALL	CONFIG_INTERRUPT
  
 LOOP:
-
+    
+    CALL    DELAY    
+    BTFSS   ADCON0, GO
+    BSF	ADCON0,GO		;INICIAR LA CONVERSION
+    
+   MOVF	    VAR_GENERAL1, W
+   BTFSC	    PIR1, TXIF
+   BANKSEL  PORTA
+   MOVWF    TXREG
+  
+   CALL	SEPARAR_NIBBLE
+   CALL	DISPLAY
+   
 
     GOTO $                          ; loop forever
+    
+    
+        
+;***********************************************************SUBRUTINAS* *****************************************************************
+    
+        SEPARAR_NIBBLE
+    MOVF    VAR_GENERAL1, W
+    ANDLW   B'00001111'
+    MOVWF   NIBBLE_L
+    SWAPF   VAR_GENERAL1, W
+    ANDLW   B'00001111'
+    MOVWF   NIBBLE_H
+
+    MOVF    VAR_GENERAL2, W
+    ANDLW   B'00001111'
+    MOVWF   NIBBLE_L2
+    SWAPF   VAR_GENERAL2, W
+    ANDLW   B'00001111'
+    MOVWF   NIBBLE_H2
+   
+    RETURN
+    
+    ;SE UTILIZA PARA VER QUE DISPLAY SE PRENDERA, VARIANDO VALOR DE BANDERAS CONTINUAMENTE 
+TOGGLE_B0
+    INCF   BANDERAS, F
+    MOVLW    .4
+    SUBWF    BANDERAS, W
+    BTFSC    STATUS, Z 
+    CLRF	BANDERAS
+    RETURN   
+    
+      DISPLAY	    
+    CLRF    PORTD
+    MOVLW   .0
+    SUBWF   BANDERAS,W
+    BTFSC   STATUS, Z
+    GOTO    DISPLAY_0
+    MOVLW   .1
+    SUBWF   BANDERAS, W
+    BTFSC   STATUS, Z 
+    GOTO DISPLAY_1
+    MOVLW   .2
+    SUBWF   BANDERAS,W
+    BTFSC   STATUS, Z
+    GOTO    DISPLAY_2
+    MOVLW   .3
+    SUBWF   BANDERAS, W
+    BTFSC   STATUS, Z 
+    GOTO  DISPLAY_3
+    
+DISPLAY_0:
+    MOVF  NIBBLE_L, W
+    CALL	  TABLE
+    MOVWF   PORTC
+    BSF	    PORTD, RD0
+    GOTO	 FIN_DISPLAY
+DISPLAY_1:
+    MOVF    NIBBLE_H, W	
+    CALL    TABLE
+    MOVWF   PORTC
+    BSF	    PORTD, RD1
+    GOTO	 FIN_DISPLAY
+DISPLAY_2:
+    MOVF    NIBBLE_L2, W
+    CALL	TABLE
+    MOVWF   PORTC
+    BSF	PORTD, RD2
+    GOTO    FIN_DISPLAY  
+DISPLAY_3:
+    MOVF    NIBBLE_H2, W
+    CALL	TABLE
+    MOVWF   PORTC
+    BSF	PORTD, RD3
+    GOTO	 FIN_DISPLAY
+FIN_DISPLAY:
+    CALL    TOGGLE_B0
+    RETURN
+    
+    
+    DELAY
+    MOVLW   .255
+    MOVWF   DEL
+    DECFSZ  DEL, F
+    GOTO    $-1
+    RETURN
+
+    
+;***************************************************CONFIGURACIONES *****************************************************************
+    CONFIG_IO
+  
+    BANKSEL	TRISA
+    CLRF		TRISB
+    CLRF		TRISD
+    CLRF		TRISC
+    
+    BANKSEL	PORTA
+    CLRF		PORTA
+    CLRF		PORTC
+    CLRF		PORTD
+    CLRF		PORTB
+    CLRF		NIBBLE_H
+    CLRF		NIBBLE_L
+
+    BANKSEL ADCON1
+    MOVLW B'00000000' ; JUSTIFICADO A LA IZQUIERDA
+    MOVWF ADCON1	   ; VDD COMO REFER ENCIA
+    BANKSEL TRISA
+    BSF	TRISA, 0
+    BANKSEL ANSEL
+    BSF	ANSEL, 0
+    BANKSEL ADCON0
+    MOVLW B'01000001'	;FOSC/8
+    MOVWF ADCON0		;AN0, On
+    
+    BANKSEL TRISA
+    MOVLW   .207
+    MOVWF    SPBRG
+    CLRF    SPBRGH  
+
+    BCF	TXSTA, BRGH ; LOW SPEED DE BAUDIOS
+    BCF	TXSTA, SYNC;MODO ASINCRONO
+    BSF	TXSTA, TXEN; SE HABILITA LA TRANSMISION
+    BCF	TXSTA, TX9 ; SOLO 8 BITS
+    BANKSEL BAUDCTL
+    BCF	BAUDCTL, BRG16 ;SE USAN 8 BITS
+    
+    BANKSEL PORTA
+    BSF	RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
+    
+    RETURN
+    
+    
+     CONFIG_INTERRUPT
+    
+    BANKSEL	TRISA
+    BSF		PIE1, ADIE
+    BANKSEL	PORTA
+    BSF		INTCON, GIE
+    BSF		INTCON, PEIE
+    BCF		PIR1, ADIF
+
+    RETURN
 
     END
