@@ -10,6 +10,7 @@
 ;
 ;*******************************************************************************  
     ;probando git
+    ;probando git por segunda vez
     #include "p16f887.inc"
 
 ; CONFIG1
