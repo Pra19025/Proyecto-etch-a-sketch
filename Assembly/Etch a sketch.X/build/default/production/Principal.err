@@ -13,17 +13,17 @@ Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 227 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 228 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 229 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 243 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 245 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 246 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 248 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 249 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 256 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 257 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 251 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 252 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 259 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 260 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 261 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 262 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 263 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 264 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 272 : Found label after column 1. (CONFIG_INTERRUPT)
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 275 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 265 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 267 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 275 : Found label after column 1. (CONFIG_INTERRUPT)
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 278 : Register in operand not in bank 0.  Ensure that bank bits are correct.
