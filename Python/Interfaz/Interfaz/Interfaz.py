@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         
         # Título de la ventana
-        self.setWindowTitle("Mi App")
+        self.setWindowTitle("ETCH A SKETCH")
         self.setWindowIcon(QIcon("animal-dog.png"))
 
         # Creación de la barra de herramientas
