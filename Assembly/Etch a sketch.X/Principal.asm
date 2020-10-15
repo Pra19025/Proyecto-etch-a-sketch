@@ -34,6 +34,14 @@ VAR_GENERAL1	RES 1
 VAR_GENERAL2	RES 1
 VAR_GENERAL3	RES 1
 CANAL		RES 1
+X_CEN		RES 1
+X_DEC		RES 1
+X_UNI		RES 1
+Y_CEN		RES 1
+Y_DEC		RES 1
+Y_UNI		RES 1
+		
+		
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
     
@@ -108,8 +116,8 @@ MAIN_PROG CODE                      ; let linker place main program
  
 START
  
-CALL	CONFIG_IO   
-CALL	CONFIG_INTERRUPT
+    CALL	CONFIG_IO   
+    CALL	CONFIG_INTERRUPT
  
 LOOP:
     
@@ -117,29 +125,121 @@ LOOP:
     BTFSS   ADCON0, GO
     BSF	ADCON0,GO		;INICIAR LA CONVERSION
    ;INICIA EN EL CANAL 0
-    MOVF	    VAR_GENERAL1, W
-   BTFSS	    PIR1, TXIF
-   GOTO SALTO
-   BANKSEL  PORTA
-   MOVWF    TXREG
    
-    CALL	DELAY
+   ;antes de mandar el código hay que hacer la conversión
+XCENTENAS:
+    MOVLW   .100
+    SUBWF   VAR_GENERAL1, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL1
+    BTFSC   STATUS, C
+    INCF	X_CEN  
+    BTFSC	STATUS, C
+    GOTO XCENTENAS
    
-   MOVF	VAR_GENERAL2, W
-   BTFSS    PIR1, TXIF
-   BANKSEL  PORTA
-   MOVWF    TXREG
+XDECENAS:
+    MOVLW    .10
+    SUBWF   VAR_GENERAL1, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL1
+    BTFSC   STATUS, C
+    INCF	X_DEC
+    BTFSC	STATUS, C
+    GOTO XDECENAS
+    
+XUNIDADES:
+    MOVLW    .1
+    SUBWF   VAR_GENERAL1, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL1
+    BTFSC   STATUS, C
+    INCF	X_UNI  
+    BTFSC	STATUS, C
+    GOTO XUNIDADES    
 
-   SALTO:
-   CALL	SEPARAR_NIBBLE
-   CALL	DISPLAY
+    
+YCENTENAS:
+    MOVLW   .100
+    SUBWF   VAR_GENERAL2, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL2
+    BTFSC   STATUS, C
+    INCF	Y_CEN  
+    BTFSC	STATUS, C
+    GOTO YCENTENAS
    
-GOTO LOOP
+YDECENAS:
+    MOVLW    .10
+    SUBWF   VAR_GENERAL2, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL2
+    BTFSC   STATUS, C
+    INCF	Y_DEC  
+    BTFSC	STATUS, C
+    GOTO YDECENAS
+    
+YUNIDADES:
+    MOVLW    .1
+    SUBWF   VAR_GENERAL2, W
+    BTFSC    STATUS, C
+    MOVWF    VAR_GENERAL2
+    BTFSC   STATUS, C
+    INCF	Y_UNI  
+    BTFSC	STATUS, C
+    GOTO YUNIDADES    
+       
+  ;despues de hacer la conversion para mandar centenas, decenas y unidades, ya puedo mandar los datos
+   
+    MOVF	    X_CEN, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+    
+    MOVF	    X_DEC, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+
+    MOVF	    X_UNI, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+
+    
+    
+    MOVF	    Y_CEN, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+    
+    MOVF	    Y_DEC, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+
+    MOVF	    Y_UNI, W
+    MOVWF	    TXREG
+    BTFSS	    PIR1, TXIF
+    GOTO	    $-1
+    CALL	DELAY
+    
+    
+
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+   
+    GOTO LOOP
     GOTO $                          ; loop forever
     
     
         
 ;***********************************************************SUBRUTINAS* *****************************************************************
+     
     
         SEPARAR_NIBBLE
     MOVF    VAR_GENERAL1, W

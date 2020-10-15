@@ -1,30 +1,32 @@
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 22 : Found label after column 1. (GPR_VAR)
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 28 : Found label after column 1. (W_TEMP)
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 31 : Found label after column 1. (NIBBLE_L3)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 85 : Found label after column 1. (TABLE)
-Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 86 : Using default destination of 1 (file).
-Warning[203] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 111 : Found opcode in column 1. (CALL)
-Warning[203] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 112 : Found opcode in column 1. (CALL)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 133 : Found label after column 1. (SALTO)
-Warning[203] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 137 : Found opcode in column 1. (GOTO)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 144 : Found label after column 1. (SEPARAR_NIBBLE)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 177 : Found label after column 1. (DISPLAY)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 245 : Found label after column 1. (DELAY)
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 254 : Found label after column 1. (CONFIG_IO)
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 257 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 258 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 259 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 277 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 279 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 280 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 282 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 283 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 290 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 291 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 293 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 294 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 295 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 296 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 298 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 306 : Found label after column 1. (CONFIG_INTERRUPT)
-Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 309 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 93 : Found label after column 1. (TABLE)
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 94 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 136 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 146 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 156 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 167 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 177 : Using default destination of 1 (file).
+Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 187 : Using default destination of 1 (file).
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 244 : Found label after column 1. (SEPARAR_NIBBLE)
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 277 : Found label after column 1. (DISPLAY)
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 345 : Found label after column 1. (DELAY)
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 354 : Found label after column 1. (CONFIG_IO)
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 357 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 358 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 359 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 377 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 379 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 380 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 382 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 383 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 390 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 391 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 393 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 394 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 395 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 396 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 398 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 406 : Found label after column 1. (CONFIG_INTERRUPT)
+Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 409 : Register in operand not in bank 0.  Ensure that bank bits are correct.
