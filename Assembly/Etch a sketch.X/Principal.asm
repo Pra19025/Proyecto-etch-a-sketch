@@ -53,6 +53,8 @@ PUSH:
     SWAPF	   STATUS, W
     MOVWF	   STATUS_TEMP 
 
+   
+
 ISR:
     BCF	PIR1, ADIF
     BTFSC   CANAL, 0
@@ -120,6 +122,8 @@ START
     CALL	CONFIG_INTERRUPT
  
 LOOP:
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
     
     CALL    DELAY
     BTFSS   ADCON0, GO
@@ -188,7 +192,17 @@ YUNIDADES:
     BTFSC	STATUS, C
     GOTO YUNIDADES    
        
-  ;despues de hacer la conversion para mandar centenas, decenas y unidades, ya puedo mandar los datos
+  ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para que correspondan a numeros en ascii
+  
+  MOVLW	.48
+  ADDWF	X_CEN
+  ADDWF	X_DEC
+  ADDWF	X_UNI
+  
+  ADDWF	Y_CEN
+  ADDWF	Y_DEC
+  ADDWF	Y_UNI
+  
    
     MOVF	    X_CEN, W
     MOVWF	    TXREG
@@ -196,19 +210,35 @@ YUNIDADES:
     GOTO	    $-1
     CALL	DELAY
     
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+    
     MOVF	    X_DEC, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
+    
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
 
     MOVF	    X_UNI, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
-
     
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+
+    MOVLW   0x2C    
+    MOVWF   TXREG
+    BTFSS   PIR1, TXIF
+    GOTO $-1
+    CALL    DELAY
+    
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
     
     MOVF	    Y_CEN, W
     MOVWF	    TXREG
@@ -216,18 +246,32 @@ YUNIDADES:
     GOTO	    $-1
     CALL	DELAY
     
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+    
     MOVF	    Y_DEC, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
 
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+    
     MOVF	    Y_UNI, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
     
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+    
+    MOVLW   .13
+    MOVWF   TXREG
+    BTFSS   PIR1, TXIF
+    GOTO $-1
+    CALL    DELAY
     
 
     CALL	SEPARAR_NIBBLE
@@ -386,7 +430,7 @@ FIN_DISPLAY:
     MOVWF ADCON0		;AN0, On
     
     BANKSEL TRISA
-    MOVLW   .207
+    MOVLW   .5	;PARA BAUDRATE DE 10417
     MOVWF    SPBRG
     CLRF    SPBRGH  
 

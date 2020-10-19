@@ -1,4 +1,30 @@
 from tkinter import *
+from serial import *
+import time
+
+
+if __name__ == "__main__":
+    name = input("Introduce el nombre del puerto:")
+    rate = 10417
+
+    pic = Serial(port=name, baudrate=rate)
+    while True:
+        time.sleep(0.5)
+        lectura = pic.read(1)
+        print(lectura)
+        
+
+
+def Direccion(self)
+    self.recibir()
+    
+    
+
+def recibir(self):
+        self.dataRead = self.puerto.readline()
+    
+
+
 
 raiz = Tk()
 raiz.title("Etch a sketch")
