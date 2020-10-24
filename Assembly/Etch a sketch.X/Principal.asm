@@ -40,6 +40,7 @@ X_UNI		RES 1
 Y_CEN		RES 1
 Y_DEC		RES 1
 Y_UNI		RES 1
+CONTADOR	RES 1
 		
 		
 RES_VECT  CODE    0x0000            ; processor reset vector
@@ -122,14 +123,26 @@ START
     CALL	CONFIG_INTERRUPT
  
 LOOP:
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
+    CLRF    X_CEN
+    CLRF    X_DEC
+    CLRF    X_UNI
+    CLRF    Y_CEN
+    CLRF    Y_DEC
+    CLRF    Y_UNI
+    
     
     CALL    DELAY
+    LECTURA:
     BTFSS   ADCON0, GO
     BSF	ADCON0,GO		;INICIAR LA CONVERSION
-   ;INICIA EN EL CANAL 0
-   
+    INCF	CONTADOR
+    MOVLW .2
+    SUBWF   CONTADOR
+    BTFSS   STATUS, Z 
+    GOTO    LECTURA
+    
+    CLRF    CONTADOR
+    
    ;antes de mandar el código hay que hacer la conversión
 XCENTENAS:
     MOVLW   .100
@@ -137,7 +150,7 @@ XCENTENAS:
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL1
     BTFSC   STATUS, C
-    INCF	X_CEN  
+    INCF	X_CEN, F  
     BTFSC	STATUS, C
     GOTO XCENTENAS
    
@@ -147,7 +160,7 @@ XDECENAS:
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL1
     BTFSC   STATUS, C
-    INCF	X_DEC
+    INCF	X_DEC, F
     BTFSC	STATUS, C
     GOTO XDECENAS
     
@@ -157,18 +170,17 @@ XUNIDADES:
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL1
     BTFSC   STATUS, C
-    INCF	X_UNI  
+    INCF	X_UNI, F
     BTFSC	STATUS, C
     GOTO XUNIDADES    
 
-    
 YCENTENAS:
     MOVLW   .100
     SUBWF   VAR_GENERAL2, W
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL2
     BTFSC   STATUS, C
-    INCF	Y_CEN  
+    INCF	Y_CEN, F  
     BTFSC	STATUS, C
     GOTO YCENTENAS
    
@@ -178,7 +190,7 @@ YDECENAS:
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL2
     BTFSC   STATUS, C
-    INCF	Y_DEC  
+    INCF	Y_DEC, F  
     BTFSC	STATUS, C
     GOTO YDECENAS
     
@@ -188,20 +200,28 @@ YUNIDADES:
     BTFSC    STATUS, C
     MOVWF    VAR_GENERAL2
     BTFSC   STATUS, C
-    INCF	Y_UNI  
+    INCF	Y_UNI, F  
     BTFSC	STATUS, C
     GOTO YUNIDADES    
        
   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para que correspondan a numeros en ascii
   
-  MOVLW	.48
-  ADDWF	X_CEN
-  ADDWF	X_DEC
-  ADDWF	X_UNI
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
   
-  ADDWF	Y_CEN
-  ADDWF	Y_DEC
-  ADDWF	Y_UNI
+  
+    MOVLW	.48
+    ADDWF	X_CEN, F
+    MOVLW	.48
+    ADDWF	X_DEC, F
+    MOVLW	.48
+    ADDWF	X_UNI, F
+    MOVLW	.48
+    ADDWF	Y_CEN, F
+    MOVLW	.48
+    ADDWF	Y_DEC, F
+    MOVLW	.48
+    ADDWF	Y_UNI, F
   
    
     MOVF	    X_CEN, W
@@ -210,73 +230,51 @@ YUNIDADES:
     GOTO	    $-1
     CALL	DELAY
     
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-    
     MOVF	    X_DEC, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
     
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-
     MOVF	    X_UNI, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
     
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-
-    MOVLW   0x2C    
+    MOVLW   B'00101100'    ;COMA
     MOVWF   TXREG
     BTFSS   PIR1, TXIF
     GOTO $-1
     CALL    DELAY
-    
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
+    CALL    DELAY
+    CALL    DELAY
     
     MOVF	    Y_CEN, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
-    
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-    
+        
     MOVF	    Y_DEC, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
 
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-    
     MOVF	    Y_UNI, W
     MOVWF	    TXREG
     BTFSS	    PIR1, TXIF
     GOTO	    $-1
     CALL	DELAY
     
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-    
-    MOVLW   .13
+    MOVLW   B'00001010'	;NUEVA LINEA
     MOVWF   TXREG
     BTFSS   PIR1, TXIF
     GOTO $-1
     CALL    DELAY
     
-
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-   
+    
     GOTO LOOP
     GOTO $                          ; loop forever
     
@@ -286,26 +284,27 @@ YUNIDADES:
      
     
         SEPARAR_NIBBLE
-    MOVF    VAR_GENERAL1, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_L
-    SWAPF   VAR_GENERAL1, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_H
-
-    MOVF    VAR_GENERAL2, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_L2
-    SWAPF   VAR_GENERAL2, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_H2
+	
+    MOVF    X_CEN, W
+    MOVWF  NIBBLE_L
     
-    MOVF    VAR_GENERAL3, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_L3
-    SWAPF   VAR_GENERAL3, W
-    ANDLW   B'00001111'
-    MOVWF   NIBBLE_H3
+    MOVF    X_DEC, W
+    MOVWF  NIBBLE_H
+    
+    MOVF    X_UNI, W
+    MOVWF  NIBBLE_L2
+    
+    
+    MOVF    Y_CEN, W
+    MOVWF  NIBBLE_H2
+    
+    MOVF    Y_DEC, W
+    MOVWF  NIBBLE_L3
+    
+    MOVF    Y_UNI, W
+    MOVWF  NIBBLE_H3
+    
+    
    
     RETURN
     
@@ -370,13 +369,13 @@ DISPLAY_3:
     BSF	PORTB, RB3
     GOTO	 FIN_DISPLAY
 DISPLAY_4:
-    MOVF    NIBBLE_L2, W
+    MOVF    NIBBLE_L3, W
     CALL	TABLE
     MOVWF   PORTD
     BSF	PORTB, RB4
     GOTO    FIN_DISPLAY  
 DISPLAY_5:
-    MOVF    NIBBLE_H2, W
+    MOVF    NIBBLE_H3, W
     CALL	TABLE
     MOVWF   PORTD
     BSF	PORTB, RB5
@@ -430,11 +429,11 @@ FIN_DISPLAY:
     MOVWF ADCON0		;AN0, On
     
     BANKSEL TRISA
-    MOVLW   .5	;PARA BAUDRATE DE 10417
+    MOVLW   .25	;PARA BAUDRATE DE 9615
     MOVWF    SPBRG
     CLRF    SPBRGH  
 
-    BCF	TXSTA, BRGH ; LOW SPEED DE BAUDIOS
+    BSF	TXSTA, BRGH ; HIGH SPEED DE BAUDIOS
     BCF	TXSTA, SYNC;MODO ASINCRONO
     BSF	TXSTA, TXEN; SE HABILITA LA TRANSMISION
     BCF	TXSTA, TX9 ; SOLO 8 BITS

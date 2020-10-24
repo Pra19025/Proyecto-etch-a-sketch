@@ -1,5 +1,5 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Mon Oct 19 13:18:04 2020
+Linker Map File - Created Sat Oct 24 15:47:20 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,10 +7,10 @@ Linker Map File - Created Mon Oct 19 13:18:04 2020
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
                  ISR_VECT       code   0x000004    program   0x000064
-                MAIN_PROG       code   0x000036    program   0x000212
+                MAIN_PROG       code   0x000036    program   0x00020c
 .config_2007_BUILD/DEFAULT/PRODUCTION/PRINCIP       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/PRINCIP       code   0x002008    program   0x000002
-                  GPR_VAR      udata   0x000020       data   0x000014
+                  GPR_VAR      udata   0x000020       data   0x000015
 
 
 
@@ -18,9 +18,9 @@ Linker Map File - Created Mon Oct 19 13:18:04 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x00013e      
+                            0x000004    0x00013b      
                             0x002007    0x002008      
-            320 out of 8455 program addresses used, program memory utilization is 3%
+            317 out of 8455 program addresses used, program memory utilization is 3%
 
 
 
@@ -28,43 +28,45 @@ Linker Map File - Created Mon Oct 19 13:18:04 2020
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
              CAMBIO_CANAL   0x000013    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-         CONFIG_INTERRUPT   0x000136    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                CONFIG_IO   0x000105    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                    DELAY   0x000100    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                  DISPLAY   0x0000c7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_0   0x0000e0    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_1   0x0000e5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_2   0x0000ea    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_3   0x0000ef    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_4   0x0000f4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_5   0x0000f9    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-              FIN_DISPLAY   0x0000fe    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+         CONFIG_INTERRUPT   0x000133    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                CONFIG_IO   0x000102    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                    DELAY   0x0000fd    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                  DISPLAY   0x0000c4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_0   0x0000dd    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_1   0x0000e2    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_2   0x0000e7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_3   0x0000ec    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_4   0x0000f1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_5   0x0000f6    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+              FIN_DISPLAY   0x0000fb    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                       ISR   0x000007    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                  LECTURA   0x00003f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                      LOOP   0x000038    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                       POP   0x00001b    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                      PUSH   0x000004    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-           SEPARAR_NIBBLE   0x0000ae    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+           SEPARAR_NIBBLE   0x0000b1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     START   0x000036    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     TABLE   0x000023    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                TOGGLE_B0   0x0000c1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                XCENTENAS   0x00003d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                 XDECENAS   0x000045    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                XUNIDADES   0x00004d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                YCENTENAS   0x000055    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                 YDECENAS   0x00005d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                YUNIDADES   0x000065    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0041   0x000077    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0048   0x00007e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_004F   0x000085    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0056   0x00008c    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_005D   0x000093    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0064   0x00009a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_006B   0x0000a1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                TOGGLE_B0   0x0000be    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                XCENTENAS   0x000047    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 XDECENAS   0x00004f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                XUNIDADES   0x000057    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                YCENTENAS   0x00005f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 YDECENAS   0x000067    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                YUNIDADES   0x00006f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0052   0x000088    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0057   0x00008d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_005C   0x000092    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0061   0x000097    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0068   0x00009e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_006D   0x0000a3    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
           _MAIN_PROG_0072   0x0000a8    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
           _MAIN_PROG_0077   0x0000ad    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_00CD   0x000103    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_007A   0x0000b0    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_00CA   0x000100    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                  BANDERAS   0x000023       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     CANAL   0x00002d       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 CONTADOR   0x000034       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                       DEL   0x000020       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                  NIBBLE_H   0x000021       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                 NIBBLE_H2   0x000027       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
@@ -96,35 +98,36 @@ Linker Map File - Created Mon Oct 19 13:18:04 2020
                     TABLE   0x000023    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     START   0x000036    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                      LOOP   0x000038    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                XCENTENAS   0x00003d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                 XDECENAS   0x000045    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                XUNIDADES   0x00004d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                YCENTENAS   0x000055    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                 YDECENAS   0x00005d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                YUNIDADES   0x000065    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0041   0x000077    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0048   0x00007e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_004F   0x000085    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0056   0x00008c    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_005D   0x000093    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_0064   0x00009a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_006B   0x0000a1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                  LECTURA   0x00003f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                XCENTENAS   0x000047    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 XDECENAS   0x00004f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                XUNIDADES   0x000057    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                YCENTENAS   0x00005f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 YDECENAS   0x000067    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                YUNIDADES   0x00006f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0052   0x000088    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0057   0x00008d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_005C   0x000092    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0061   0x000097    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_0068   0x00009e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_006D   0x0000a3    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
           _MAIN_PROG_0072   0x0000a8    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
           _MAIN_PROG_0077   0x0000ad    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-           SEPARAR_NIBBLE   0x0000ae    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                TOGGLE_B0   0x0000c1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                  DISPLAY   0x0000c7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_0   0x0000e0    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_1   0x0000e5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_2   0x0000ea    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_3   0x0000ef    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_4   0x0000f4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                DISPLAY_5   0x0000f9    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-              FIN_DISPLAY   0x0000fe    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                    DELAY   0x000100    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-          _MAIN_PROG_00CD   0x000103    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-                CONFIG_IO   0x000105    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
-         CONFIG_INTERRUPT   0x000136    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_007A   0x0000b0    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+           SEPARAR_NIBBLE   0x0000b1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                TOGGLE_B0   0x0000be    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                  DISPLAY   0x0000c4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_0   0x0000dd    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_1   0x0000e2    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_2   0x0000e7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_3   0x0000ec    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_4   0x0000f1    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                DISPLAY_5   0x0000f6    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+              FIN_DISPLAY   0x0000fb    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                    DELAY   0x0000fd    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+          _MAIN_PROG_00CA   0x000100    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                CONFIG_IO   0x000102    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+         CONFIG_INTERRUPT   0x000133    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                       DEL   0x000020       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                  NIBBLE_H   0x000021       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                  NIBBLE_L   0x000022       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
@@ -145,5 +148,6 @@ Linker Map File - Created Mon Oct 19 13:18:04 2020
                     Y_CEN   0x000031       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     Y_DEC   0x000032       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
                     Y_UNI   0x000033       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
+                 CONTADOR   0x000034       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\Etch a sketch.X\Principal.asm
 
 
