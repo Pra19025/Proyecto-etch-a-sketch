@@ -41,7 +41,19 @@ Y_CEN		RES 1
 Y_DEC		RES 1
 Y_UNI		RES 1
 CONTADOR	RES 1
-		
+ENTRADA		RES 1
+CONTADOR2	RES 1
+PIXEL_CEN	RES 1
+PIXEL_DEC	RES 1
+PIXEL_UNI		RES 1
+PXH		RES 1
+PXM		RES 1
+PXL		RES 1
+PYH		RES 1
+PYM		RES 1
+PYL		RES 1
+				
+	
 		
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -57,6 +69,83 @@ PUSH:
    
 
 ISR:
+    BANKSEL PORTA
+     BTFSS   PIR1, RCIF
+    GOTO TRANSMISION
+    MOVF    RCREG, W
+    MOVWF   ENTRADA
+    INCF	CONTADOR2, F
+    
+    MOVLW .1
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    HIGHX
+    
+    MOVLW .2
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    MEDIUMX
+    
+    MOVLW .3
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    LOWX
+    
+    MOVLW .4
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    TRANSMISION
+    
+    MOVLW .5
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    HIGHY
+    
+    MOVLW .6
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    MEDIUMY
+    
+    MOVLW .7
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    LOWY
+    
+    MOVLW .8
+    SUBWF   CONTADOR2, W
+    BTFSS   STATUS, Z
+    GOTO    TRANSMISION
+    
+    
+    
+    HIGHX:
+    MOVFW   ENTRADA
+    MOVWF   PXH
+    GOTO    TRANSMISION
+    MEDIUMX:
+    MOVFW   ENTRADA
+    MOVWF   PXM
+    GOTO    TRANSMISION
+    LOWX:
+    MOVFW   ENTRADA
+    MOVWF   PXL
+    GOTO    TRANSMISION
+     
+    HIGHY:
+    MOVFW   ENTRADA
+    MOVWF   PYH
+    GOTO    TRANSMISION
+    MEDIUMY:
+    MOVFW   ENTRADA
+    MOVWF   PYM
+    GOTO    TRANSMISION
+    LOWY:
+    MOVFW   ENTRADA
+    MOVWF   PYL
+    GOTO    TRANSMISION
+     
+    
+    TRANSMISION:
     BCF	PIR1, ADIF
     BTFSC   CANAL, 0
     GOTO	 CAMBIO_CANAL
@@ -205,10 +294,9 @@ YUNIDADES:
     GOTO YUNIDADES    
        
   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para que correspondan a numeros en ascii
-  
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-  
+
+     CALL	SEPARAR_NIBBLE
+     CALL	DISPLAY
   
     MOVLW	.48
     ADDWF	X_CEN, F
@@ -273,6 +361,9 @@ YUNIDADES:
     BTFSS   PIR1, TXIF
     GOTO $-1
     CALL    DELAY
+    
+    
+    
     
     
     GOTO LOOP
@@ -399,7 +490,8 @@ FIN_DISPLAY:
     BANKSEL	TRISA
     CLRF		TRISB
     CLRF		TRISD
-    CLRF		TRISC
+    MOVLW		B'11111111'
+    MOVWF		TRISC
     
     BANKSEL	PORTA
     CLRF		PORTA
@@ -412,7 +504,12 @@ FIN_DISPLAY:
     CLRF		CANAL
     CLRF		VAR_GENERAL1
     CLRF		VAR_GENERAL2
-    CLRF		VAR_GENERAL3
+    CLRF		PXH
+    CLRF		PXM
+    CLRF		PXL
+    CLRF		PYH
+    CLRF		PYM
+    CLRF		PYL
 
 
     BANKSEL ADCON1
@@ -442,7 +539,7 @@ FIN_DISPLAY:
     
     BANKSEL PORTA
     BSF	RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
-    
+    BSF	RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
     RETURN
     
     
@@ -450,6 +547,7 @@ FIN_DISPLAY:
     
     BANKSEL	TRISA
     BSF		PIE1, ADIE
+    BSF		PIE1, RCIE
     BANKSEL	PORTA
     BSF		INTCON, GIE
     BSF		INTCON, PEIE

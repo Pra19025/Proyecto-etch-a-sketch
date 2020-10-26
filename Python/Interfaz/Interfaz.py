@@ -5,9 +5,9 @@ import time
 import sys
 
 
+
 def ventana():
     
-    #codigo para convertir los strings en entradas
     global potx
     global poty
     potx = 120
@@ -21,6 +21,7 @@ def ventana():
     y = 0
     xanterior = x
     yanterior = y
+
     
     raiz = Tk()
     raiz.title("Etch a sketch")
@@ -28,7 +29,7 @@ def ventana():
 
     raiz.config(bg ="grey")
     canv = Canvas(raiz, width = 800, height = 800, bg = "white")
-    canv.pack(fill = "both", expand="True")
+    canv.pack(fill = "both", expand="False")
     
     while True:
         xanterior = x
@@ -67,14 +68,14 @@ def ventana():
 
         #canv.create_line(x1, y1, x2, y2, fill = "color")
         
-        print("potenciometro eje x",potx)
-        print("potenciometro eje y",poty)
-        print("xanterior", xanterior)
-        print("x", x)
-        print("yanterior", yanterior)
-        print("y", y)
-        
-        time.sleep(0.4)
+#         print("potenciometro eje x",potx)
+#         print("potenciometro eje y",poty)
+#         print("xanterior", xanterior)
+        #print("x", x)
+# #         print("yanterior", yanterior)
+        #print("y", y)
+#         
+        time.sleep(0.01)
         raiz.update_idletasks()
         raiz.update()
         
@@ -85,17 +86,13 @@ def ventana():
 #         B = Button(raiz, text = "Borrar dibujo", command = borrar)
 #         B.pack()
 #         
-       
-
-        
-        
-        
-
-
+    
 def Comunicacion():
     pic = serial.Serial(port='COM3', baudrate=9600, parity = serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize= serial.EIGHTBITS,timeout = 0)
     pic.flushInput()
     pic.flushOutput()
+    global potx
+    global poty
         
     while True:
         pic.flushInput()
@@ -105,12 +102,44 @@ def Comunicacion():
         read = pic.readline().decode('ascii')
         
         valoresxy = read.split(",")
-        global potx
-        global poty
-        potx = int(valoresxy[0])
-        poty = int(valoresxy[1])
+        if len(valoresxy) == 2:
+            try:
+                if len(valoresxy[0]) == 3 and int(valoresxy[0])<=255:
+                    potx = int(valoresxy[0])
+            except:
+                potx = potx
+        if len(valoresxy) == 2:
+            try:
+                if len(valoresxy[1]) == 3 and int(valoresxy[1])<=255:                
+                    poty = int(valoresxy[1])
+            except:
+                poty = poty   
+        print(valoresxy[1])
+        print("potenciometro del eje x",potx)
+        print("potenciometro del eje y",poty)
         
-        print(read)
+        
+        #stringx = "0"
+        #stringy = "0"
+        
+        stringx = str(x)
+        stringy = str(y)
+         
+#         if len(stringx) == 1:
+#             stringx = "00"+ stringx
+#         elif len(stringx) == 2:
+#             stringx = "0" + stringx
+#             
+#         if len(stringy) == 1:
+#             stringy = "00"+ stringy
+#         elif len(stringy) == 2:
+#             stringy = "0" + stringy
+#         print("lectura",read)
+        
+        print((stringx + "," +stringy).encode("ascii"))
+        pic.write((stringx+","+stringy+chr(0)).encode("ascii"))
+        
+   
     return
 
 
