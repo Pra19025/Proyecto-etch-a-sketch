@@ -269,7 +269,10 @@ YUNIDADES:
     GOTO $-1
     CALL    DELAY
     
+<<<<<<< HEAD
     ;DESPUES DE MANDAR LOS DATOS VOY A REVISAR SI ESTAN ENTRANDO DATOS
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
     
     GOTO LOOP
     GOTO $                          ; loop forever
