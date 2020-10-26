@@ -271,7 +271,10 @@ YUNIDADES:
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ;DESPUES DE MANDAR LOS DATOS VOY A REVISAR SI ESTAN ENTRANDO DATOS
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
