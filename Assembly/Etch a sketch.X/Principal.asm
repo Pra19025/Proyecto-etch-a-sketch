@@ -66,86 +66,7 @@ PUSH:
     SWAPF	   STATUS, W
     MOVWF	   STATUS_TEMP 
 
-   
-
 ISR:
-    BANKSEL PORTA
-     BTFSS   PIR1, RCIF
-    GOTO TRANSMISION
-    MOVF    RCREG, W
-    MOVWF   ENTRADA
-    INCF	CONTADOR2, F
-    
-    MOVLW .1
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    HIGHX
-    
-    MOVLW .2
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    MEDIUMX
-    
-    MOVLW .3
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    LOWX
-    
-    MOVLW .4
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    TRANSMISION
-    
-    MOVLW .5
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    HIGHY
-    
-    MOVLW .6
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    MEDIUMY
-    
-    MOVLW .7
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    LOWY
-    
-    MOVLW .8
-    SUBWF   CONTADOR2, W
-    BTFSS   STATUS, Z
-    GOTO    TRANSMISION
-    
-    
-    
-    HIGHX:
-    MOVFW   ENTRADA
-    MOVWF   PXH
-    GOTO    TRANSMISION
-    MEDIUMX:
-    MOVFW   ENTRADA
-    MOVWF   PXM
-    GOTO    TRANSMISION
-    LOWX:
-    MOVFW   ENTRADA
-    MOVWF   PXL
-    GOTO    TRANSMISION
-     
-    HIGHY:
-    MOVFW   ENTRADA
-    MOVWF   PYH
-    GOTO    TRANSMISION
-    MEDIUMY:
-    MOVFW   ENTRADA
-    MOVWF   PYM
-    GOTO    TRANSMISION
-    LOWY:
-    MOVFW   ENTRADA
-    MOVWF   PYL
-    GOTO    TRANSMISION
-     
-    
-    TRANSMISION:
     BCF	PIR1, ADIF
     BTFSC   CANAL, 0
     GOTO	 CAMBIO_CANAL
@@ -165,20 +86,17 @@ CAMBIO_CANAL:
     BANKSEL ADCON0
     MOVLW    B'01000001'    ;SE PONE CANAL 0
     MOVWF   ADCON0
-    
+
     
 POP:
+    INCF    CONTADOR
     MOVLW B'11111111'
     XORWF  CANAL, F	;CADA VEZ QUE SE ENTRA A LA INTERRUPCION SE CAMBIA EL CANAL
-   
-    
     SWAPF	    STATUS_TEMP, W
     MOVWF	    STATUS
     SWAPF	    W_TEMP, F
     SWAPF	    W_TEMP, W
     BSF	    INTCON, GIE
-    
-
   
     RETFIE
 
@@ -218,19 +136,19 @@ LOOP:
     CLRF    Y_CEN
     CLRF    Y_DEC
     CLRF    Y_UNI
-    
-    
+        
     CALL    DELAY
     LECTURA:
     BTFSS   ADCON0, GO
     BSF	ADCON0,GO		;INICIAR LA CONVERSION
-    INCF	CONTADOR
+    
     MOVLW .2
-    SUBWF   CONTADOR
-    BTFSS   STATUS, Z 
+    SUBWF   CONTADOR, W
+    BTFSS   STATUS, Z
     GOTO    LECTURA
     
     CLRF    CONTADOR
+    
     
    ;antes de mandar el código hay que hacer la conversión
 XCENTENAS:
@@ -362,9 +280,15 @@ YUNIDADES:
     GOTO $-1
     CALL    DELAY
     
+    ;DESPUES DE MANDAR LOS DATOS VOY A REVISAR SI ESTAN ENTRANDO DATOS
+    
+    ;BTFSC   PIR1, RCIF
+    ;GOTO    FINAL
+    ;MOVF    RCREG, W
+    ;MOVWF   ENTRADA
     
     
-    
+    ;FINAL:
     
     GOTO LOOP
     GOTO $                          ; loop forever
@@ -379,7 +303,7 @@ YUNIDADES:
     MOVF    X_CEN, W
     MOVWF  NIBBLE_L
     
-    MOVF    X_DEC, W
+    MOVF   X_DEC, W
     MOVWF  NIBBLE_H
     
     MOVF    X_UNI, W
@@ -539,7 +463,7 @@ FIN_DISPLAY:
     
     BANKSEL PORTA
     BSF	RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
-    BSF	RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
+    ;BSF	RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
     RETURN
     
     
@@ -547,7 +471,6 @@ FIN_DISPLAY:
     
     BANKSEL	TRISA
     BSF		PIE1, ADIE
-    BSF		PIE1, RCIE
     BANKSEL	PORTA
     BSF		INTCON, GIE
     BSF		INTCON, PEIE

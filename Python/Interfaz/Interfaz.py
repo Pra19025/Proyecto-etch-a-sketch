@@ -100,7 +100,7 @@ def Comunicacion():
         time.sleep(0.4)
         pic.readline()
         read = pic.readline().decode('ascii')
-        
+        print("lectura",read)
         valoresxy = read.split(",")
         if len(valoresxy) == 2:
             try:
@@ -113,8 +113,9 @@ def Comunicacion():
                 if len(valoresxy[1]) == 3 and int(valoresxy[1])<=255:                
                     poty = int(valoresxy[1])
             except:
-                poty = poty   
-        print(valoresxy[1])
+                poty = poty
+                
+        #print(valoresxy[1])
         print("potenciometro del eje x",potx)
         print("potenciometro del eje y",poty)
         
@@ -125,16 +126,16 @@ def Comunicacion():
         stringx = str(x)
         stringy = str(y)
          
-#         if len(stringx) == 1:
-#             stringx = "00"+ stringx
-#         elif len(stringx) == 2:
-#             stringx = "0" + stringx
-#             
-#         if len(stringy) == 1:
-#             stringy = "00"+ stringy
-#         elif len(stringy) == 2:
-#             stringy = "0" + stringy
-#         print("lectura",read)
+        if len(stringx) == 1:
+            stringx = "00"+ stringx
+        elif len(stringx) == 2:
+            stringx = "0" + stringx
+            
+        if len(stringy) == 1:
+            stringy = "00"+ stringy
+        elif len(stringy) == 2:
+            stringy = "0" + stringy
+      
         
         print((stringx + "," +stringy).encode("ascii"))
         pic.write((stringx+","+stringy+chr(0)).encode("ascii"))
