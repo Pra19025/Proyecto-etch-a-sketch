@@ -41,19 +41,7 @@ Y_CEN		RES 1
 Y_DEC		RES 1
 Y_UNI		RES 1
 CONTADOR	RES 1
-ENTRADA		RES 1
-CONTADOR2	RES 1
-PIXEL_CEN	RES 1
-PIXEL_DEC	RES 1
-PIXEL_UNI		RES 1
-PXH		RES 1
-PXM		RES 1
-PXL		RES 1
-PYH		RES 1
-PYM		RES 1
-PYL		RES 1
-				
-	
+		
 		
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -212,9 +200,10 @@ YUNIDADES:
     GOTO YUNIDADES    
        
   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para que correspondan a numeros en ascii
-
-     CALL	SEPARAR_NIBBLE
-     CALL	DISPLAY
+  
+    CALL	SEPARAR_NIBBLE
+    CALL	DISPLAY
+  
   
     MOVLW	.48
     ADDWF	X_CEN, F
@@ -281,14 +270,6 @@ YUNIDADES:
     CALL    DELAY
     
     ;DESPUES DE MANDAR LOS DATOS VOY A REVISAR SI ESTAN ENTRANDO DATOS
-    
-    ;BTFSC   PIR1, RCIF
-    ;GOTO    FINAL
-    ;MOVF    RCREG, W
-    ;MOVWF   ENTRADA
-    
-    
-    ;FINAL:
     
     GOTO LOOP
     GOTO $                          ; loop forever
@@ -414,8 +395,7 @@ FIN_DISPLAY:
     BANKSEL	TRISA
     CLRF		TRISB
     CLRF		TRISD
-    MOVLW		B'11111111'
-    MOVWF		TRISC
+    CLRF		TRISC
     
     BANKSEL	PORTA
     CLRF		PORTA
@@ -428,12 +408,7 @@ FIN_DISPLAY:
     CLRF		CANAL
     CLRF		VAR_GENERAL1
     CLRF		VAR_GENERAL2
-    CLRF		PXH
-    CLRF		PXM
-    CLRF		PXL
-    CLRF		PYH
-    CLRF		PYM
-    CLRF		PYL
+    CLRF		VAR_GENERAL3
 
 
     BANKSEL ADCON1
@@ -463,7 +438,7 @@ FIN_DISPLAY:
     
     BANKSEL PORTA
     BSF	RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
-    ;BSF	RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
+    
     RETURN
     
     
