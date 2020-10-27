@@ -1,0 +1,1380 @@
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001  ;*******************************************************************************
+                      00002 ;
+                      00003 ;   Filename:       Etch_a_sketch -> Principal.asm
+                      00004 ;   Date:                   8/10/2020
+                      00005 ;   File Version:           v.1
+                      00006 ;   Author:                 Noel Prado
+                      00007 ;   Company:        UVG
+                      00008 ;   Description:            Proyecto 2 etch a sketch
+                      00009 ;
+                      00010 ;*******************************************************************************  
+                      00011 
+                      00012     #include "p16f887.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 22 2017
+                      00005 ;  MPASM PIC16F887 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00810         LIST
+                      00013 
+                      00014 ; CONFIG1
+                      00015 ; __config 0xE0D5
+2007   20D4           00016     __CONFIG _CONFIG1, _FOSC_INTRC_NOCLKOUT & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _CPD_OFF &
+                             _BOREN_OFF & _IESO_OFF & _FCMEN_OFF & _LVP_OFF
+                      00017 ; CONFIG2
+                      00018 ; __config 0xFFFF
+2008   3FFF           00019     __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+                      00020     
+Warning[207]: Found label after column 1. (GPR_VAR)
+                      00021     GPR_VAR         UDATA
+0000                  00022 DEL         RES 1
+0001                  00023 NIBBLE_H            RES 1
+0002                  00024 NIBBLE_L            RES 1
+0003                  00025 BANDERAS    RES 1
+0004                  00026 STATUS_TEMP RES 1
+Warning[207]: Found label after column 1. (W_TEMP)
+0005                  00027  W_TEMP     RES 1
+0006                  00028 NIBBLE_L2   RES 1
+0007                  00029 NIBBLE_H2   RES 1
+Warning[207]: Found label after column 1. (NIBBLE_L3)
+0008                  00030  NIBBLE_L3   RES 1
+0009                  00031 NIBBLE_H3   RES 1
+000A                  00032 VAR_GENERAL1    RES 1
+000B                  00033 VAR_GENERAL2    RES 1
+000C                  00034 VAR_GENERAL3    RES 1
+000D                  00035 CANAL           RES 1
+000E                  00036 X_CEN           RES 1
+000F                  00037 X_DEC           RES 1
+0010                  00038 X_UNI           RES 1
+0011                  00039 Y_CEN           RES 1
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0012                  00040 Y_DEC           RES 1
+0013                  00041 Y_UNI           RES 1
+0014                  00042 CONTADOR        RES 1
+0015                  00043 ENTRADA         RES 1
+0016                  00044 CONTADOR2       RES 1
+0017                  00045 PIXEL_CEN       RES 1
+0018                  00046 PIXEL_DEC       RES 1
+0019                  00047 PIXEL_UNI               RES 1
+001A                  00048 PXH             RES 1
+001B                  00049 PXM             RES 1
+001C                  00050 PXL             RES 1
+001D                  00051 PYH             RES 1
+001E                  00052 PYM             RES 1
+001F                  00053 PYL             RES 1
+0020                  00054 DATO1           RES 1
+0021                  00055 DATO2           RES 1
+0022                  00056 DATO3           RES 1
+0023                  00057 DATOAUX         RES 1
+                      00058         
+                      00059                 
+                      00060 RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00061     GOTO    START                   ; go to beginning of program
+                      00062     
+                      00063        
+                      00064 ISR_VECT    CODE 0X0004
+                      00065     
+0004                  00066 PUSH:
+0004   00??           00067     MOVWF           W_TEMP
+0005   0E03           00068     SWAPF          STATUS, W
+0006   00??           00069     MOVWF          STATUS_TEMP 
+                      00070 
+0007                  00071 ISR:
+0007   190B           00072     BTFSC INTCON,2  ;INTERRUPCION DEL TIMER 0
+0008   2???           00073     GOTO    INT_TMR0
+0009   1B0C           00074     BTFSC   PIR1,6 ;INTERRUPCION DEL ADC
+000A   2???           00075     GOTO    INT_ADC
+000B   1A8C           00076     BTFSC   PIR1,5   ;INTERRUPCION EUSART RECEIVER
+000C   2???           00077     GOTO    INT_RC
+                      00078     
+000D                  00079 INT_TMR0: ;MULTIPLEXACION DE LOS DISPLAYS
+000D   110B           00080     BCF INTCON,2
+Error[113]  : Symbol not previously defined (VALOR_TMR0)
+000E   3000           00081     MOVLW   VALOR_TMR0
+000F   0081           00082     MOVWF   TMR0
+Error[113]  : Symbol not previously defined (MOSTRAR_DATOS)
+0010   2000           00083     CALL MOSTRAR_DATOS
+Error[113]  : Symbol not previously defined (MUX)
+0011   0A80           00084     INCF    MUX,F
+0012   2???           00085     GOTO LOAD
+0013                  00086 INT_ADC:
+0013   130C           00087     BCF PIR1,6 ;SE LIMPIA LA BANDERA
+0014   081E           00088     MOVF    ADRESH,W
+                      00089     
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0015   1D1F           00090     BTFSS   ADCON0,2 ;SI ESTE BIT ES CERO SE ESTABA LEYENDO EL CANAL 3
+0016   2???           00091     GOTO LECTURA_C1
+                      00092     
+Error[113]  : Symbol not previously defined (ADC_C1)
+0017   0080           00093     MOVWF ADC_C1
+0018   111F           00094     BCF ADCON0,2 ;SE CAMBIA AL CANAL 1
+0019   2???           00095     GOTO    FINAL
+                      00096     
+Warning[207]: Found label after column 1. (LECTURA_C1)
+001A                  00097     LECTURA_C1
+Error[113]  : Symbol not previously defined (ADC_C0)
+001A   0080           00098     MOVWF   ADC_C0
+001B   151F           00099     BSF ADCON0,2 ;SE CAMBIA AL CANAL 0
+                      00100     
+Warning[207]: Found label after column 1. (FINAL)
+001C                  00101     FINAL
+001C   0000           00102     NOP
+001D   0000           00103     NOP
+001E   0000           00104     NOP
+001F   0000           00105     NOP
+0020   0000           00106     NOP ;REQUERIMIENTOS DE ADQUISICION
+0021   149F           00107     BSF ADCON0,1 ;INICIA LA CONVERSION
+0022   2???           00108     GOTO LOAD
+0023                  00109 INT_RC:
+0023   081A           00110     MOVF    RCREG,W
+0024   00??           00111     MOVWF   DATOAUX
+                      00112     ;AQUI SE VERIFICA A QUE DATO CORRESPONDE
+0025   302C           00113     MOVLW   .44 ;SE VERIFICA SI ES UNA COMA
+0026   02??           00114     SUBWF   DATOAUX,W ;SI DA CERO ES QUE SE RECIBIO UNA COMA
+0027   1D03           00115     BTFSS   STATUS,2 ;BIT Z SI LO ANTERIOR DA CERO ES QUE SE LEYO UNA COMA
+0028   2???           00116     GOTO    VER_Y
+                      00117     
+                      00118     ;SE LE LEYO UNA COMA SE EJECUTA ESTO
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+0029   0180           00119     CLRF    CONTADOR_RECEIVER
+002A   08??           00120     MOVF    DATO1,W
+Error[113]  : Symbol not previously defined (PIXEL_X_HIGH)
+002B   0080           00121     MOVWF  PIXEL_X_HIGH
+002C   08??           00122     MOVF   DATO2,W
+Error[113]  : Symbol not previously defined (PIXEL_X_MID)
+002D   0080           00123     MOVWF   PIXEL_X_MID
+002E   08??           00124     MOVF    DATO3,W
+Error[113]  : Symbol not previously defined (PIXEL_X_LOW)
+002F   0080           00125     MOVWF   PIXEL_X_LOW
+0030   2???           00126     GOTO LOAD ;SE SALE DE LA INTERRUPCION
+                      00127     
+Warning[207]: Found label after column 1. (VER_Y)
+0031                  00128     VER_Y
+0031   3000           00129     MOVLW   .0
+0032   02??           00130     SUBWF   DATOAUX,W
+0033   1D03           00131     BTFSS   STATUS,2 ;SI DA CERO, SE ENVIO EL CARACTER NULO, QUE INDICA QUE LOS VALORES ANTERIORES ERAN 
+                            LOS CORRESPONDIENTES A Y
+0034   2???           00132     GOTO    GUARDAR_COORDENADAS
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00133     ;SE GUARDAN LOS VALORES DE Y
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+0035   0180           00134     CLRF    CONTADOR_RECEIVER
+0036   08??           00135     MOVF    DATO1,W
+Error[113]  : Symbol not previously defined (PIXEL_Y_HIGH)
+0037   0080           00136     MOVWF  PIXEL_Y_HIGH
+0038   08??           00137     MOVF   DATO2,W
+Error[113]  : Symbol not previously defined (PIXEL_Y_MID)
+0039   0080           00138     MOVWF  PIXEL_Y_MID
+003A   08??           00139     MOVF    DATO3,W
+Error[113]  : Symbol not previously defined (PIXEL_Y_LOW)
+003B   0080           00140     MOVWF  PIXEL_Y_LOW
+003C   2???           00141     GOTO LOAD
+                      00142     ;SE VAN GUARDANDO LOS DATOS
+Warning[207]: Found label after column 1. (GUARDAR_COORDENADAS)
+003D                  00143     GUARDAR_COORDENADAS
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+003D   0800           00144     MOVF    CONTADOR_RECEIVER,W
+003E   0782           00145     ADDWF   PCL,F 
+003F   2???           00146     GOTO VALOR1
+0040   2???           00147     GOTO VALOR2
+0041   2???           00148     GOTO VALOR3
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+0042   0180           00149     CLRF    CONTADOR_RECEIVER
+Warning[207]: Found label after column 1. (VALOR1)
+0043                  00150     VALOR1
+0043   3030           00151     MOVLW   .48
+0044   02??           00152     SUBWF   DATOAUX,W
+0045   00??           00153     MOVWF   DATO1
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+0046   0A80           00154     INCF    CONTADOR_RECEIVER,F
+0047   2???           00155     GOTO LOAD   
+Warning[207]: Found label after column 1. (VALOR2)
+0048                  00156     VALOR2
+0048   3030           00157     MOVLW   .48
+0049   02??           00158     SUBWF   DATOAUX,W
+004A   00??           00159     MOVWF   DATO2
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+004B   0A80           00160     INCF    CONTADOR_RECEIVER,F
+004C   2???           00161     GOTO LOAD   
+Warning[207]: Found label after column 1. (VALOR3)
+004D                  00162     VALOR3
+004D   3030           00163     MOVLW   .48
+004E   02??           00164     SUBWF   DATOAUX,W
+004F   00??           00165     MOVWF   DATO3
+Error[113]  : Symbol not previously defined (CONTADOR_RECEIVER)
+0050   0A80           00166     INCF    CONTADOR_RECEIVER,F
+                      00167    
+                      00168     
+                      00169     
+0051                  00170 LOAD:
+Error[113]  : Symbol not previously defined (STATUS_RAM)
+0051   0E00           00171     SWAPF   STATUS_RAM,W
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0052   0083           00172     MOVWF   STATUS
+Error[113]  : Symbol not previously defined (W_RAM)
+0053   0E80           00173     SWAPF   W_RAM,F
+Error[113]  : Symbol not previously defined (W_RAM)
+0054   0E00           00174     SWAPF   W_RAM,W
+                      00175     
+0055   0009           00176     RETFIE
+                      00177 
+Warning[207]: Found label after column 1. (TABLE)
+0056                  00178  TABLE
+Message[305]: Using default destination of 1 (file).
+0056   058F           00179     ANDWF   B'00001111'; LIMITANDO DE 0 A F
+0057   0782           00180     ADDWF   PCL, F
+                      00181     ;     PBAFGECD
+0058   3477           00182     RETLW   B'01110111' ;0
+0059   3442           00183     RETLW   B'01000010' ;1
+005A   346D           00184     RETLW   B'01101101' ;2
+005B   346B           00185     RETLW   B'01101011' ;3
+005C   345A           00186     RETLW   B'01011010' ;4
+005D   343B           00187     RETLW   B'00111011' ;5
+005E   343F           00188     RETLW   B'00111111' ;6
+005F   3462           00189     RETLW   B'01100010' ;7
+0060   347F           00190     RETLW   B'01111111' ;8
+0061   347B           00191     RETLW   B'01111011' ;9
+0062   347E           00192     RETLW   B'01111110' ;A
+0063   341F           00193     RETLW   B'00011111' ;B
+0064   3435           00194     RETLW   B'00110101' ;C
+0065   344F           00195     RETLW   B'01001111' ;D
+0066   343D           00196     RETLW   B'00111101' ;E
+0067   343C           00197     RETLW   B'00111100' ;F
+0068   0008           00198     RETURN
+                      00199 
+                      00200 MAIN_PROG CODE                      ; let linker place main program
+                      00201  
+0000                  00202 START
+                      00203  
+0000   2???           00204     CALL        CONFIG_IO   
+0001   2???           00205     CALL        CONFIG_INTERRUPT
+                      00206  
+0002                  00207 LOOP:
+0002   01??           00208     CLRF    X_CEN
+0003   01??           00209     CLRF    X_DEC
+0004   01??           00210     CLRF    X_UNI
+0005   01??           00211     CLRF    Y_CEN
+0006   01??           00212     CLRF    Y_DEC
+0007   01??           00213     CLRF    Y_UNI
+                      00214     
+                      00215     
+0008   2???           00216     CALL    DELAY
+Warning[207]: Found label after column 1. (LECTURA)
+0009                  00217     LECTURA:
+0009   1C9F           00218     BTFSS   ADCON0, GO
+000A   149F           00219     BSF ADCON0,GO               ;INICIAR LA CONVERSION
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[305]: Using default destination of 1 (file).
+000B   0A??           00220     INCF        CONTADOR
+000C   3002           00221     MOVLW .2
+Message[305]: Using default destination of 1 (file).
+000D   02??           00222     SUBWF   CONTADOR
+000E   1D03           00223     BTFSS   STATUS, Z 
+000F   2???           00224     GOTO    LECTURA
+                      00225     
+0010   01??           00226     CLRF    CONTADOR
+                      00227     
+                      00228    ;antes de mandar el código hay que hacer la conversión
+0011                  00229 XCENTENAS:
+0011   3064           00230     MOVLW   .100
+0012   02??           00231     SUBWF   VAR_GENERAL1, W
+0013   1803           00232     BTFSC    STATUS, C
+0014   00??           00233     MOVWF    VAR_GENERAL1
+0015   1803           00234     BTFSC   STATUS, C
+0016   0A??           00235     INCF        X_CEN, F  
+0017   1803           00236     BTFSC       STATUS, C
+0018   2???           00237     GOTO XCENTENAS
+                      00238    
+0019                  00239 XDECENAS:
+0019   300A           00240     MOVLW    .10
+001A   02??           00241     SUBWF   VAR_GENERAL1, W
+001B   1803           00242     BTFSC    STATUS, C
+001C   00??           00243     MOVWF    VAR_GENERAL1
+001D   1803           00244     BTFSC   STATUS, C
+001E   0A??           00245     INCF        X_DEC, F
+001F   1803           00246     BTFSC       STATUS, C
+0020   2???           00247     GOTO XDECENAS
+                      00248     
+0021                  00249 XUNIDADES:
+0021   3001           00250     MOVLW    .1
+0022   02??           00251     SUBWF   VAR_GENERAL1, W
+0023   1803           00252     BTFSC    STATUS, C
+0024   00??           00253     MOVWF    VAR_GENERAL1
+0025   1803           00254     BTFSC   STATUS, C
+0026   0A??           00255     INCF        X_UNI, F
+0027   1803           00256     BTFSC       STATUS, C
+0028   2???           00257     GOTO XUNIDADES    
+                      00258 
+0029                  00259 YCENTENAS:
+0029   3064           00260     MOVLW   .100
+002A   02??           00261     SUBWF   VAR_GENERAL2, W
+002B   1803           00262     BTFSC    STATUS, C
+002C   00??           00263     MOVWF    VAR_GENERAL2
+002D   1803           00264     BTFSC   STATUS, C
+002E   0A??           00265     INCF        Y_CEN, F  
+002F   1803           00266     BTFSC       STATUS, C
+0030   2???           00267     GOTO YCENTENAS
+                      00268    
+0031                  00269 YDECENAS:
+0031   300A           00270     MOVLW    .10
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0032   02??           00271     SUBWF   VAR_GENERAL2, W
+0033   1803           00272     BTFSC    STATUS, C
+0034   00??           00273     MOVWF    VAR_GENERAL2
+0035   1803           00274     BTFSC   STATUS, C
+0036   0A??           00275     INCF        Y_DEC, F  
+0037   1803           00276     BTFSC       STATUS, C
+0038   2???           00277     GOTO YDECENAS
+                      00278     
+0039                  00279 YUNIDADES:
+0039   3001           00280     MOVLW    .1
+003A   02??           00281     SUBWF   VAR_GENERAL2, W
+003B   1803           00282     BTFSC    STATUS, C
+003C   00??           00283     MOVWF    VAR_GENERAL2
+003D   1803           00284     BTFSC   STATUS, C
+003E   0A??           00285     INCF        Y_UNI, F  
+003F   1803           00286     BTFSC       STATUS, C
+0040   2???           00287     GOTO YUNIDADES    
+                      00288        
+                      00289   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para q
+                            ue correspondan a numeros en ascii
+                      00290 
+0041   2???           00291      CALL       SEPARAR_NIBBLE
+0042   2???           00292      CALL       DISPLAY
+                      00293   
+0043   3030           00294     MOVLW       .48
+0044   07??           00295     ADDWF       X_CEN, F
+0045   3030           00296     MOVLW       .48
+0046   07??           00297     ADDWF       X_DEC, F
+0047   3030           00298     MOVLW       .48
+0048   07??           00299     ADDWF       X_UNI, F
+0049   3030           00300     MOVLW       .48
+004A   07??           00301     ADDWF       Y_CEN, F
+004B   3030           00302     MOVLW       .48
+004C   07??           00303     ADDWF       Y_DEC, F
+004D   3030           00304     MOVLW       .48
+004E   07??           00305     ADDWF       Y_UNI, F
+                      00306   
+                      00307    
+004F   08??           00308     MOVF            X_CEN, W
+0050   0099           00309     MOVWF           TXREG
+0051   1E0C           00310     BTFSS           PIR1, TXIF
+0052   2???           00311     GOTO            $-1
+0053   2???           00312     CALL        DELAY
+                      00313     
+0054   08??           00314     MOVF            X_DEC, W
+0055   0099           00315     MOVWF           TXREG
+0056   1E0C           00316     BTFSS           PIR1, TXIF
+0057   2???           00317     GOTO            $-1
+0058   2???           00318     CALL        DELAY
+                      00319     
+0059   08??           00320     MOVF            X_UNI, W
+005A   0099           00321     MOVWF           TXREG
+005B   1E0C           00322     BTFSS           PIR1, TXIF
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+005C   2???           00323     GOTO            $-1
+005D   2???           00324     CALL        DELAY
+                      00325     
+005E   302C           00326     MOVLW   B'00101100'    ;COMA
+005F   0099           00327     MOVWF   TXREG
+0060   1E0C           00328     BTFSS   PIR1, TXIF
+0061   2???           00329     GOTO $-1
+0062   2???           00330     CALL    DELAY
+0063   2???           00331     CALL    DELAY
+0064   2???           00332     CALL    DELAY
+                      00333     
+0065   08??           00334     MOVF            Y_CEN, W
+0066   0099           00335     MOVWF           TXREG
+0067   1E0C           00336     BTFSS           PIR1, TXIF
+0068   2???           00337     GOTO            $-1
+0069   2???           00338     CALL        DELAY
+                      00339         
+006A   08??           00340     MOVF            Y_DEC, W
+006B   0099           00341     MOVWF           TXREG
+006C   1E0C           00342     BTFSS           PIR1, TXIF
+006D   2???           00343     GOTO            $-1
+006E   2???           00344     CALL        DELAY
+                      00345 
+006F   08??           00346     MOVF            Y_UNI, W
+0070   0099           00347     MOVWF           TXREG
+0071   1E0C           00348     BTFSS           PIR1, TXIF
+0072   2???           00349     GOTO            $-1
+0073   2???           00350     CALL        DELAY
+                      00351     
+0074   300A           00352     MOVLW   B'00001010' ;NUEVA LINEA
+0075   0099           00353     MOVWF   TXREG
+0076   1E0C           00354     BTFSS   PIR1, TXIF
+0077   2???           00355     GOTO $-1
+0078   2???           00356     CALL    DELAY
+                      00357     
+                      00358     
+                      00359     
+                      00360     
+                      00361     
+0079   2???           00362     GOTO LOOP
+007A   2???           00363     GOTO $                          ; loop forever
+                      00364     
+                      00365     
+                      00366         
+                      00367 ;***********************************************************SUBRUTINAS* ********************************
+                            *********************************
+                      00368      
+                      00369     
+Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
+007B                  00370         SEPARAR_NIBBLE
+                      00371         
+007B   08??           00372     MOVF    X_CEN, W
+007C   00??           00373     MOVWF  NIBBLE_L
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00374     
+007D   08??           00375     MOVF    X_DEC, W
+007E   00??           00376     MOVWF  NIBBLE_H
+                      00377     
+007F   08??           00378     MOVF    X_UNI, W
+0080   00??           00379     MOVWF  NIBBLE_L2
+                      00380     
+                      00381     
+0081   08??           00382     MOVF    Y_CEN, W
+0082   00??           00383     MOVWF  NIBBLE_H2
+                      00384     
+0083   08??           00385     MOVF    Y_DEC, W
+0084   00??           00386     MOVWF  NIBBLE_L3
+                      00387     
+0085   08??           00388     MOVF    Y_UNI, W
+0086   00??           00389     MOVWF  NIBBLE_H3
+                      00390     
+                      00391     
+                      00392    
+0087   0008           00393     RETURN
+                      00394     
+                      00395     ;SE UTILIZA PARA VER QUE DISPLAY SE PRENDERA, VARIANDO VALOR DE BANDERAS CONTINUAMENTE 
+0088                  00396 TOGGLE_B0
+0088   0A??           00397     INCF   BANDERAS, F
+0089   3006           00398     MOVLW    .6
+008A   02??           00399     SUBWF    BANDERAS, W
+008B   1903           00400     BTFSC    STATUS, Z 
+008C   01??           00401     CLRF        BANDERAS
+008D   0008           00402     RETURN   
+                      00403     
+Warning[207]: Found label after column 1. (DISPLAY)
+008E                  00404       DISPLAY       
+008E   0186           00405     CLRF    PORTB
+008F   3000           00406     MOVLW   .0
+0090   02??           00407     SUBWF   BANDERAS,W
+0091   1903           00408     BTFSC   STATUS, Z
+0092   2???           00409     GOTO    DISPLAY_0
+0093   3001           00410     MOVLW   .1
+0094   02??           00411     SUBWF   BANDERAS, W
+0095   1903           00412     BTFSC   STATUS, Z 
+0096   2???           00413     GOTO DISPLAY_1
+0097   3002           00414     MOVLW   .2
+0098   02??           00415     SUBWF   BANDERAS,W
+0099   1903           00416     BTFSC   STATUS, Z
+009A   2???           00417     GOTO    DISPLAY_2
+009B   3003           00418     MOVLW   .3
+009C   02??           00419     SUBWF   BANDERAS, W
+009D   1903           00420     BTFSC   STATUS, Z 
+009E   2???           00421     GOTO  DISPLAY_3
+009F   3004           00422     MOVLW   .4
+00A0   02??           00423     SUBWF   BANDERAS,W
+00A1   1903           00424     BTFSC   STATUS, Z
+00A2   2???           00425     GOTO    DISPLAY_4
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A3   3005           00426     MOVLW   .5
+00A4   02??           00427     SUBWF   BANDERAS, W
+00A5   1903           00428     BTFSC   STATUS, Z 
+00A6   2???           00429     GOTO  DISPLAY_5
+                      00430     
+00A7                  00431 DISPLAY_0:
+00A7   08??           00432     MOVF  NIBBLE_L, W
+00A8   2???           00433     CALL          TABLE
+00A9   0088           00434     MOVWF   PORTD
+00AA   1406           00435     BSF     PORTB, RB0
+00AB   2???           00436     GOTO         FIN_DISPLAY
+00AC                  00437 DISPLAY_1:
+00AC   08??           00438     MOVF    NIBBLE_H, W 
+00AD   2???           00439     CALL    TABLE
+00AE   0088           00440     MOVWF   PORTD
+00AF   1486           00441     BSF     PORTB, RD1
+00B0   2???           00442     GOTO         FIN_DISPLAY
+00B1                  00443 DISPLAY_2:
+00B1   08??           00444     MOVF    NIBBLE_L2, W
+00B2   2???           00445     CALL        TABLE
+00B3   0088           00446     MOVWF   PORTD
+00B4   1506           00447     BSF PORTB, RB2
+00B5   2???           00448     GOTO    FIN_DISPLAY  
+00B6                  00449 DISPLAY_3:
+00B6   08??           00450     MOVF    NIBBLE_H2, W
+00B7   2???           00451     CALL        TABLE
+00B8   0088           00452     MOVWF   PORTD
+00B9   1586           00453     BSF PORTB, RB3
+00BA   2???           00454     GOTO         FIN_DISPLAY
+00BB                  00455 DISPLAY_4:
+00BB   08??           00456     MOVF    NIBBLE_L3, W
+00BC   2???           00457     CALL        TABLE
+00BD   0088           00458     MOVWF   PORTD
+00BE   1606           00459     BSF PORTB, RB4
+00BF   2???           00460     GOTO    FIN_DISPLAY  
+00C0                  00461 DISPLAY_5:
+00C0   08??           00462     MOVF    NIBBLE_H3, W
+00C1   2???           00463     CALL        TABLE
+00C2   0088           00464     MOVWF   PORTD
+00C3   1686           00465     BSF PORTB, RB5
+00C4   2???           00466     GOTO         FIN_DISPLAY
+00C5                  00467 FIN_DISPLAY:
+00C5   2???           00468     CALL    TOGGLE_B0
+00C6   0008           00469     RETURN
+                      00470     
+                      00471     
+Warning[207]: Found label after column 1. (DELAY)
+00C7                  00472     DELAY
+00C7   30FF           00473     MOVLW   .255
+00C8   00??           00474     MOVWF   DEL
+00C9   0B??           00475     DECFSZ  DEL, F
+00CA   2???           00476     GOTO    $-1
+00CB   0008           00477     RETURN
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00478 
+                      00479     
+                      00480 ;***************************************************CONFIGURACIONES ************************************
+                            *****************************
+Warning[207]: Found label after column 1. (CONFIG_IO)
+00CC                  00481     CONFIG_IO
+                      00482   
+00CC   1683 1303      00483     BANKSEL     TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CE   0186           00484     CLRF                TRISB
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CF   0188           00485     CLRF                TRISD
+00D0   30FF           00486     MOVLW               B'11111111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00D1   0087           00487     MOVWF               TRISC
+                      00488     
+00D2   1283 1303      00489     BANKSEL     PORTA
+00D4   0185           00490     CLRF                PORTA
+00D5   0187           00491     CLRF                PORTC
+00D6   0188           00492     CLRF                PORTD
+00D7   0186           00493     CLRF                PORTB
+00D8   01??           00494     CLRF                NIBBLE_H
+00D9   01??           00495     CLRF                NIBBLE_L
+                      00496     
+00DA   01??           00497     CLRF                CANAL
+00DB   01??           00498     CLRF                VAR_GENERAL1
+00DC   01??           00499     CLRF                VAR_GENERAL2
+00DD   01??           00500     CLRF                PXH
+00DE   01??           00501     CLRF                PXM
+00DF   01??           00502     CLRF                PXL
+00E0   01??           00503     CLRF                PYH
+00E1   01??           00504     CLRF                PYM
+00E2   01??           00505     CLRF                PYL
+                      00506 
+                      00507 
+00E3   1683 1303      00508     BANKSEL ADCON1
+00E5   3000           00509     MOVLW B'00000000' ; JUSTIFICADO A LA IZQUIERDA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E6   009F           00510     MOVWF ADCON1           ; VDD COMO REFER ENCIA
+00E7   1683 1303      00511     BANKSEL TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E9   1405           00512     BSF TRISA, 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00EA   1485           00513     BSF TRISA, 1
+00EB   1683 1703      00514     BANKSEL ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00ED   1408           00515     BSF ANSEL, 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00EE   1488           00516     BSF ANSEL, 1
+00EF   1283 1303      00517     BANKSEL ADCON0
+00F1   3041           00518     MOVLW B'01000001'   ;FOSC/8
+00F2   009F           00519     MOVWF ADCON0                ;AN0, On
+                      00520     
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00F3   1683 1303      00521     BANKSEL TRISA
+00F5   3019           00522     MOVLW   .25 ;PARA BAUDRATE DE 9615
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F6   0099           00523     MOVWF    SPBRG
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F7   019A           00524     CLRF    SPBRGH  
+                      00525 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F8   1518           00526     BSF TXSTA, BRGH ; HIGH SPEED DE BAUDIOS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F9   1218           00527     BCF TXSTA, SYNC;MODO ASINCRONO
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FA   1698           00528     BSF TXSTA, TXEN; SE HABILITA LA TRANSMISION
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FB   1318           00529     BCF TXSTA, TX9 ; SOLO 8 BITS
+00FC   1683 1703      00530     BANKSEL BAUDCTL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FE   1187           00531     BCF BAUDCTL, BRG16 ;SE USAN 8 BITS
+                      00532     
+00FF   1283 1303      00533     BANKSEL PORTA
+0101   1798           00534     BSF RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
+0102   1618           00535     BSF RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
+0103   0008           00536     RETURN
+                      00537     
+                      00538     
+Warning[207]: Found label after column 1. (CONFIG_INTERRUPT)
+0104                  00539      CONFIG_INTERRUPT
+                      00540     
+0104   1683 1303      00541     BANKSEL     TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0106   170C           00542     BSF         PIE1, ADIE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0107   168C           00543     BSF         PIE1, RCIE
+0108   1283 1303      00544     BANKSEL     PORTA
+010A   178B           00545     BSF         INTCON, GIE
+010B   170B           00546     BSF         INTCON, PEIE
+010C   130C           00547     BCF         PIR1, ADIF
+                      00548 
+010D   0008           00549     RETURN
+                      00550 
+20D4 3FFF             00551     END
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ANS0                              00000000
+ANS1                              00000001
+ANS10                             00000002
+ANS11                             00000003
+ANS12                             00000004
+ANS13                             00000005
+ANS2                              00000002
+ANS3                              00000003
+ANS4                              00000004
+ANS5                              00000005
+ANS6                              00000006
+ANS7                              00000007
+ANS8                              00000000
+ANS9                              00000001
+ANSEL                             00000188
+ANSELH                            00000189
+BANDERAS                          00000003
+BAUDCTL                           00000187
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRG0                              00000000
+BRG1                              00000001
+BRG10                             00000002
+BRG11                             00000003
+BRG12                             00000004
+BRG13                             00000005
+BRG14                             00000006
+BRG15                             00000007
+BRG16                             00000003
+BRG2                              00000002
+BRG3                              00000003
+BRG4                              00000004
+BRG5                              00000005
+BRG6                              00000006
+BRG7                              00000007
+BRG8                              00000000
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BRG9                              00000001
+BRGH                              00000002
+C                                 00000000
+C1CH0                             00000000
+C1CH1                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SEN                             00000005
+C2CH0                             00000000
+C2CH1                             00000001
+C2IE                              00000006
+C2IF                              00000006
+C2OE                              00000005
+C2ON                              00000007
+C2OUT                             00000006
+C2POL                             00000004
+C2R                               00000002
+C2REN                             00000004
+C2RSEL                            00000004
+C2SYNC                            00000000
+CANAL                             0000000D
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000002
+CHS1                              00000003
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHS2                              00000004
+CHS3                              00000005
+CKE                               00000006
+CKP                               00000004
+CM1CON0                           00000107
+CM2CON0                           00000108
+CM2CON1                           00000109
+CONFIG_INTERRUPT                  00000104
+CONFIG_IO                         000000CC
+CONTADOR                          00000014
+CONTADOR2                         00000016
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DATO1                             00000020
+DATO2                             00000021
+DATO3                             00000022
+DATOAUX                           00000023
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DEL                               00000000
+DELAY                             000000C7
+DISPLAY                           0000008E
+DISPLAY_0                         000000A7
+DISPLAY_1                         000000AC
+DISPLAY_2                         000000B1
+DISPLAY_3                         000000B6
+DISPLAY_4                         000000BB
+DISPLAY_5                         000000C0
+D_A                               00000005
+D_NOT_A                           00000005
+ECCPAS                            0000009C
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDAT                             0000010C
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ENTRADA                           00000015
+F                                 00000001
+FERR                              00000002
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+FINAL                             0000001C
+FIN_DISPLAY                       000000C5
+FSR                               00000004
+FVREN                             00000000
+GCEN                              00000007
+GIE                               00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+GUARDAR_COORDENADAS               0000003D
+HTS                               00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+INT_ADC                           00000013
+INT_RC                            00000023
+INT_TMR0                          0000000D
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRP                               00000007
+ISR                               00000007
+LECTURA                           00000009
+LECTURA_C1                        0000001A
+LOAD                              00000051
+LOOP                              00000002
+LTS                               00000001
+MC1OUT                            00000007
+MC2OUT                            00000006
+MSK                               00000093
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NIBBLE_H                          00000001
+NIBBLE_H2                         00000007
+NIBBLE_H3                         00000009
+NIBBLE_L                          00000002
+NIBBLE_L2                         00000006
+NIBBLE_L3                         00000008
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OPTION_REG                        00000081
+OSCCON                            0000008F
+OSCTUNE                           00000090
+OSFIE                             00000007
+OSFIF                             00000007
+OSTS                              00000003
+P                                 00000004
+P1M0                              00000006
+P1M1                              00000007
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PIXEL_CEN                         00000017
+PIXEL_DEC                         00000018
+PIXEL_UNI                         00000019
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTE                             00000009
+PR2                               00000092
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
+PULSS                             00000003
+PUSH                              00000004
+PWM1CON                           0000009B
+PXH                               0000001A
+PXL                               0000001C
+PXM                               0000001B
+PYH                               0000001D
+PYL                               0000001F
+PYM                               0000001E
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEN                               00000000
+SENDB                             00000003
+SEPARAR_NIBBLE                    0000007B
+SMP                               00000007
+SPBRG                             00000099
+SPBRGH                            0000009A
+SPEN                              00000007
+SR0                               00000006
+SR1                               00000007
+SRCON                             00000185
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000093
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000000
+STATUS                            00000003
+STATUS_TEMP                       00000004
+STRA                              00000000
+STRB                              00000001
+STRC                              00000002
+STRD                              00000003
+STRSYNC                           00000004
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1GINV                            00000007
+T1GIV                             00000007
+T1GSS                             00000001
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TABLE                             00000056
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOGGLE_B0                         00000088
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRISE3                            00000003
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ULPWUE                            00000005
+ULPWUIE                           00000002
+ULPWUIF                           00000002
+VALOR1                            00000043
+VALOR2                            00000048
+VALOR3                            0000004D
+VAR_GENERAL1                      0000000A
+VAR_GENERAL2                      0000000B
+VAR_GENERAL3                      0000000C
+VCFG0                             00000004
+VCFG1                             00000005
+VER_Y                             00000031
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000097
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+VRSS                              00000004
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000105
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WPUB                              00000095
+WPUB0                             00000000
+WPUB1                             00000001
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+W_TEMP                            00000005
+XCENTENAS                         00000011
+XDECENAS                          00000019
+XUNIDADES                         00000021
+X_CEN                             0000000E
+X_DEC                             0000000F
+X_UNI                             00000010
+YCENTENAS                         00000029
+YDECENAS                          00000031
+YUNIDADES                         00000039
+Y_CEN                             00000011
+Y_DEC                             00000012
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Y_UNI                             00000013
+Z                                 00000002
+_BOR21V                           00003EFF
+_BOR40V                           00003FFF
+_BOR4V_BOR21V                     00003EFF
+_BOR4V_BOR40V                     00003FFF
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
+_BOR_OFF                          00003CFF
+_BOR_ON                           00003FFF
+_BOR_SBODEN                       00003DFF
+_CONFIG1                          00002007
+_CONFIG2                          00002008
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003F7F
+_CP_OFF                           00003FFF
+_CP_ON                            00003FBF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         00001FFF
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC                            00003FFF
+_EXTRCIO                          00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_FCMEN_OFF                        000037FF
+_FCMEN_ON                         00003FFF
+_FOSC_EC                          00003FFB
+_FOSC_EXTRC_CLKOUT                00003FFF
+_FOSC_EXTRC_NOCLKOUT              00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRC_CLKOUT                00003FFD
+_FOSC_INTRC_NOCLKOUT              00003FFC
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_IESO_OFF                         00003BFF
+_IESO_ON                          00003FFF
+_INTOSC                           00003FFD
+_INTOSCIO                         00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_LVP_OFF                          00002FFF
+_LVP_ON                           00003FFF
+_MAIN_PROG_0052                   00000052
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  1:23:41         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_MAIN_PROG_0057                   00000057
+_MAIN_PROG_005C                   0000005C
+_MAIN_PROG_0061                   00000061
+_MAIN_PROG_0068                   00000068
+_MAIN_PROG_006D                   0000006D
+_MAIN_PROG_0072                   00000072
+_MAIN_PROG_0077                   00000077
+_MAIN_PROG_007A                   0000007A
+_MAIN_PROG_00CA                   000000CA
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FF9
+__16F887                          00000001
+
+Errors   :    21
+Warnings :    17 reported,     0 suppressed
+Messages :    20 reported,     0 suppressed
+
+

@@ -1,5 +1,4 @@
- 
-    ;*******************************************************************************
+ ;*******************************************************************************
 ;
 ;   Filename:	    Etch_a_sketch -> Principal.asm
 ;   Date:		    8/10/2020
@@ -41,7 +40,22 @@ Y_CEN		RES 1
 Y_DEC		RES 1
 Y_UNI		RES 1
 CONTADOR	RES 1
-		
+ENTRADA		RES 1
+CONTADOR2	RES 1
+PIXEL_CEN	RES 1
+PIXEL_DEC	RES 1
+PIXEL_UNI		RES 1
+PXH		RES 1
+PXM		RES 1
+PXL		RES 1
+PYH		RES 1
+PYM		RES 1
+PYL		RES 1
+DATO1		RES 1
+DATO2		RES 1
+DATO3		RES 1
+DATOAUX		RES 1
+	
 		
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -55,37 +69,110 @@ PUSH:
     MOVWF	   STATUS_TEMP 
 
 ISR:
-    BCF	PIR1, ADIF
-    BTFSC   CANAL, 0
-    GOTO	 CAMBIO_CANAL
-    BANKSEL ADRESH	     
-    MOVF ADRESH,W		;GUARDAR 8 BITS EN RESULTHI
-    MOVWF VAR_GENERAL1
-    BANKSEL ADCON0
-    MOVLW    B'01000101'    ;SE PONE CANAL 1
-    MOVWF   ADCON0
-    GOTO POP
+    BTFSC INTCON,2  ;INTERRUPCION DEL TIMER 0
+    GOTO    INT_TMR0
+    BTFSC   PIR1,6 ;INTERRUPCION DEL ADC
+    GOTO    INT_ADC
+    BTFSC   PIR1,5   ;INTERRUPCION EUSART RECEIVER
+    GOTO    INT_RC
     
-CAMBIO_CANAL:
-    ;SI YA CAMBIO EL CANAL EJECUTA ESTO
-    BANKSEL ADRESH	     
-    MOVF ADRESH,W		;GUARDAR 8 BITS EN RESULTHI
-    MOVWF VAR_GENERAL2
-    BANKSEL ADCON0
-    MOVLW    B'01000001'    ;SE PONE CANAL 0
-    MOVWF   ADCON0
-
+INT_TMR0: ;MULTIPLEXACION DE LOS DISPLAYS
+    BCF	INTCON,2
+    MOVLW   VALOR_TMR0
+    MOVWF   TMR0
+    CALL MOSTRAR_DATOS
+    INCF    MUX,F
+    GOTO LOAD
+INT_ADC:
+    BCF	PIR1,6 ;SE LIMPIA LA BANDERA
+    MOVF    ADRESH,W
     
-POP:
-    INCF    CONTADOR
-    MOVLW B'11111111'
-    XORWF  CANAL, F	;CADA VEZ QUE SE ENTRA A LA INTERRUPCION SE CAMBIA EL CANAL
-    SWAPF	    STATUS_TEMP, W
-    MOVWF	    STATUS
-    SWAPF	    W_TEMP, F
-    SWAPF	    W_TEMP, W
-    BSF	    INTCON, GIE
-  
+    BTFSS   ADCON0,2 ;SI ESTE BIT ES CERO SE ESTABA LEYENDO EL CANAL 3
+    GOTO LECTURA_C1
+    
+    MOVWF ADC_C1
+    BCF	ADCON0,2 ;SE CAMBIA AL CANAL 1
+    GOTO    FINAL
+    
+    LECTURA_C1
+    MOVWF   ADC_C0
+    BSF	ADCON0,2 ;SE CAMBIA AL CANAL 0
+    
+    FINAL
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP ;REQUERIMIENTOS DE ADQUISICION
+    BSF	ADCON0,1 ;INICIA LA CONVERSION
+    GOTO LOAD
+INT_RC:
+    MOVF    RCREG,W
+    MOVWF   DATOAUX
+    ;AQUI SE VERIFICA A QUE DATO CORRESPONDE
+    MOVLW   .44 ;SE VERIFICA SI ES UNA COMA
+    SUBWF   DATOAUX,W ;SI DA CERO ES QUE SE RECIBIO UNA COMA
+    BTFSS   STATUS,2 ;BIT Z SI LO ANTERIOR DA CERO ES QUE SE LEYO UNA COMA
+    GOTO    VER_Y
+    
+    ;SE LE LEYO UNA COMA SE EJECUTA ESTO
+    CLRF    CONTADOR_RECEIVER
+    MOVF    DATO1,W
+    MOVWF  PIXEL_X_HIGH
+    MOVF   DATO2,W
+    MOVWF   PIXEL_X_MID
+    MOVF    DATO3,W
+    MOVWF   PIXEL_X_LOW
+    GOTO LOAD ;SE SALE DE LA INTERRUPCION
+    
+    VER_Y
+    MOVLW   .0
+    SUBWF   DATOAUX,W
+    BTFSS   STATUS,2 ;SI DA CERO, SE ENVIO EL CARACTER NULO, QUE INDICA QUE LOS VALORES ANTERIORES ERAN LOS CORRESPONDIENTES A Y
+    GOTO    GUARDAR_COORDENADAS
+    ;SE GUARDAN LOS VALORES DE Y
+    CLRF    CONTADOR_RECEIVER
+    MOVF    DATO1,W
+    MOVWF  PIXEL_Y_HIGH
+    MOVF   DATO2,W
+    MOVWF  PIXEL_Y_MID
+    MOVF    DATO3,W
+    MOVWF  PIXEL_Y_LOW
+    GOTO LOAD
+    ;SE VAN GUARDANDO LOS DATOS
+    GUARDAR_COORDENADAS
+    MOVF    CONTADOR_RECEIVER,W
+    ADDWF   PCL,F 
+    GOTO VALOR1
+    GOTO VALOR2
+    GOTO VALOR3
+    CLRF    CONTADOR_RECEIVER
+    VALOR1
+    MOVLW   .48
+    SUBWF   DATOAUX,W
+    MOVWF   DATO1
+    INCF    CONTADOR_RECEIVER,F
+    GOTO LOAD	
+    VALOR2
+    MOVLW   .48
+    SUBWF   DATOAUX,W
+    MOVWF   DATO2
+    INCF    CONTADOR_RECEIVER,F
+    GOTO LOAD	
+    VALOR3
+    MOVLW   .48
+    SUBWF   DATOAUX,W
+    MOVWF   DATO3
+    INCF    CONTADOR_RECEIVER,F
+   
+    
+    
+LOAD:
+    SWAPF   STATUS_RAM,W
+    MOVWF   STATUS
+    SWAPF   W_RAM,F
+    SWAPF   W_RAM,W
+    
     RETFIE
 
  TABLE
@@ -124,19 +211,19 @@ LOOP:
     CLRF    Y_CEN
     CLRF    Y_DEC
     CLRF    Y_UNI
-        
+    
+    
     CALL    DELAY
     LECTURA:
     BTFSS   ADCON0, GO
     BSF	ADCON0,GO		;INICIAR LA CONVERSION
-    
+    INCF	CONTADOR
     MOVLW .2
-    SUBWF   CONTADOR, W
-    BTFSS   STATUS, Z
+    SUBWF   CONTADOR
+    BTFSS   STATUS, Z 
     GOTO    LECTURA
     
     CLRF    CONTADOR
-    
     
    ;antes de mandar el código hay que hacer la conversión
 XCENTENAS:
@@ -200,10 +287,9 @@ YUNIDADES:
     GOTO YUNIDADES    
        
   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para que correspondan a numeros en ascii
-  
-    CALL	SEPARAR_NIBBLE
-    CALL	DISPLAY
-  
+
+     CALL	SEPARAR_NIBBLE
+     CALL	DISPLAY
   
     MOVLW	.48
     ADDWF	X_CEN, F
@@ -269,19 +355,9 @@ YUNIDADES:
     GOTO $-1
     CALL    DELAY
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    ;DESPUES DE MANDAR LOS DATOS VOY A REVISAR SI ESTAN ENTRANDO DATOS
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
+    
+    
+    
     
     GOTO LOOP
     GOTO $                          ; loop forever
@@ -296,7 +372,7 @@ YUNIDADES:
     MOVF    X_CEN, W
     MOVWF  NIBBLE_L
     
-    MOVF   X_DEC, W
+    MOVF    X_DEC, W
     MOVWF  NIBBLE_H
     
     MOVF    X_UNI, W
@@ -407,7 +483,8 @@ FIN_DISPLAY:
     BANKSEL	TRISA
     CLRF		TRISB
     CLRF		TRISD
-    CLRF		TRISC
+    MOVLW		B'11111111'
+    MOVWF		TRISC
     
     BANKSEL	PORTA
     CLRF		PORTA
@@ -420,7 +497,12 @@ FIN_DISPLAY:
     CLRF		CANAL
     CLRF		VAR_GENERAL1
     CLRF		VAR_GENERAL2
-    CLRF		VAR_GENERAL3
+    CLRF		PXH
+    CLRF		PXM
+    CLRF		PXL
+    CLRF		PYH
+    CLRF		PYM
+    CLRF		PYL
 
 
     BANKSEL ADCON1
@@ -450,7 +532,7 @@ FIN_DISPLAY:
     
     BANKSEL PORTA
     BSF	RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
-    
+    BSF	RCSTA, CREN;PARA QUE LA ENTRADA SEA EN RX
     RETURN
     
     
@@ -458,6 +540,7 @@ FIN_DISPLAY:
     
     BANKSEL	TRISA
     BSF		PIE1, ADIE
+    BSF		PIE1, RCIE
     BANKSEL	PORTA
     BSF		INTCON, GIE
     BSF		INTCON, PEIE

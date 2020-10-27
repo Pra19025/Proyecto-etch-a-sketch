@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE  1
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  1
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  1
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -67,7 +71,11 @@ Warning[207]: Found label after column 1. (NIBBLE_L3)
 0010                  00039 X_UNI           RES 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE  2
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  2
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  2
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -96,6 +104,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0005   0E03           00054     SWAPF          STATUS, W
 0006   00??           00055     MOVWF          STATUS_TEMP 
                       00056 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 0007                  00057 ISR:
@@ -136,6 +145,8 @@ Message[305]: Using default destination of 1 (file).
 Warning[207]: Found label after column 1. (TABLE)
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE  3
 =======
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
                       00057    
                       00058 
 0007                  00059 ISR:
@@ -173,12 +184,16 @@ Warning[207]: Found label after column 1. (TABLE)
                       00091     
                       00092 
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  3
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 0024                  00091  TABLE
 Message[305]: Using default destination of 1 (file).
@@ -279,6 +294,8 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
                       00093   
 0022   0009           00094     RETFIE
                       00095 
@@ -334,6 +351,9 @@ Message[305]: Using default destination of 1 (file).
 000D   02??           00140     SUBWF   CONTADOR
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  4
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -342,6 +362,7 @@ Message[305]: Using default destination of 1 (file).
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 0010                  00142 XCENTENAS:
@@ -401,6 +422,8 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 =======
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 000E   1D03           00141     BTFSS   STATUS, Z 
 000F   2???           00142     GOTO    LECTURA
                       00143     
@@ -456,6 +479,9 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0036   0A??           00193     INCF        Y_DEC, F  
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  5
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -464,6 +490,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 003A   1803           00195     BTFSC    STATUS, C
@@ -537,6 +564,8 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00207   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para q
                             ue correspondan a numeros en ascii
 =======
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 0037   1803           00194     BTFSC       STATUS, C
 0038   2???           00195     GOTO YDECENAS
                       00196     
@@ -552,6 +581,9 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00206        
                       00207   ;despues de hacer la conversion para mandar centenas, decenas y unidades, tengo que sumarles 48 para q
                             ue correspondan a numeros en ascii
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
                       00208   
 0041   2???           00209     CALL        SEPARAR_NIBBLE
@@ -593,6 +625,9 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 005E   302C           00245     MOVLW   B'00101100'    ;COMA
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  6
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -601,6 +636,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                       00247     
@@ -744,6 +780,50 @@ Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
                       00285     
 Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+005F   0099           00246     MOVWF   TXREG
+0060   1E0C           00247     BTFSS   PIR1, TXIF
+0061   2???           00248     GOTO $-1
+0062   2???           00249     CALL    DELAY
+0063   2???           00250     CALL    DELAY
+0064   2???           00251     CALL    DELAY
+                      00252     
+0065   08??           00253     MOVF            Y_CEN, W
+0066   0099           00254     MOVWF           TXREG
+0067   1E0C           00255     BTFSS           PIR1, TXIF
+0068   2???           00256     GOTO            $-1
+0069   2???           00257     CALL        DELAY
+                      00258         
+006A   08??           00259     MOVF            Y_DEC, W
+006B   0099           00260     MOVWF           TXREG
+006C   1E0C           00261     BTFSS           PIR1, TXIF
+006D   2???           00262     GOTO            $-1
+006E   2???           00263     CALL        DELAY
+                      00264 
+006F   08??           00265     MOVF            Y_UNI, W
+0070   0099           00266     MOVWF           TXREG
+0071   1E0C           00267     BTFSS           PIR1, TXIF
+0072   2???           00268     GOTO            $-1
+0073   2???           00269     CALL        DELAY
+                      00270     
+0074   300A           00271     MOVLW   B'00001010' ;NUEVA LINEA
+0075   0099           00272     MOVWF   TXREG
+0076   1E0C           00273     BTFSS   PIR1, TXIF
+0077   2???           00274     GOTO $-1
+0078   2???           00275     CALL    DELAY
+                      00276     
+                      00277     
+0079   2???           00278     GOTO LOOP
+007A   2???           00279     GOTO $                          ; loop forever
+                      00280     
+                      00281     
+                      00282         
+                      00283 ;***********************************************************SUBRUTINAS* ********************************
+                            *********************************
+                      00284      
+                      00285     
+Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 007B                  00286         SEPARAR_NIBBLE
                       00287         
 007B   08??           00288     MOVF    X_CEN, W
@@ -757,6 +837,9 @@ Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
                       00296     
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  7
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -765,6 +848,7 @@ Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                       00295     
@@ -847,6 +931,8 @@ Warning[207]: Found label after column 1. (DISPLAY)
                       00319     
 Warning[207]: Found label after column 1. (DISPLAY)
 =======
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
                       00297     
 0081   08??           00298     MOVF    Y_CEN, W
 0082   00??           00299     MOVWF  NIBBLE_H2
@@ -871,6 +957,9 @@ Warning[207]: Found label after column 1. (DISPLAY)
 008D   0008           00318     RETURN   
                       00319     
 Warning[207]: Found label after column 1. (DISPLAY)
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 008E                  00320       DISPLAY       
 008E   0186           00321     CLRF    PORTB
@@ -903,6 +992,9 @@ Warning[207]: Found label after column 1. (DISPLAY)
 00A7   08??           00348     MOVF  NIBBLE_L, W
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  8
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -911,6 +1003,7 @@ Warning[207]: Found label after column 1. (DISPLAY)
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 00A6   08??           00347     MOVF  NIBBLE_L, W
@@ -1079,11 +1172,68 @@ Warning[207]: Found label after column 1. (CONFIG_IO)
                       00398   
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  9
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+00A8   2???           00349     CALL          TABLE
+00A9   0088           00350     MOVWF   PORTD
+00AA   1406           00351     BSF     PORTB, RB0
+00AB   2???           00352     GOTO         FIN_DISPLAY
+00AC                  00353 DISPLAY_1:
+00AC   08??           00354     MOVF    NIBBLE_H, W 
+00AD   2???           00355     CALL    TABLE
+00AE   0088           00356     MOVWF   PORTD
+00AF   1486           00357     BSF     PORTB, RD1
+00B0   2???           00358     GOTO         FIN_DISPLAY
+00B1                  00359 DISPLAY_2:
+00B1   08??           00360     MOVF    NIBBLE_L2, W
+00B2   2???           00361     CALL        TABLE
+00B3   0088           00362     MOVWF   PORTD
+00B4   1506           00363     BSF PORTB, RB2
+00B5   2???           00364     GOTO    FIN_DISPLAY  
+00B6                  00365 DISPLAY_3:
+00B6   08??           00366     MOVF    NIBBLE_H2, W
+00B7   2???           00367     CALL        TABLE
+00B8   0088           00368     MOVWF   PORTD
+00B9   1586           00369     BSF PORTB, RB3
+00BA   2???           00370     GOTO         FIN_DISPLAY
+00BB                  00371 DISPLAY_4:
+00BB   08??           00372     MOVF    NIBBLE_L3, W
+00BC   2???           00373     CALL        TABLE
+00BD   0088           00374     MOVWF   PORTD
+00BE   1606           00375     BSF PORTB, RB4
+00BF   2???           00376     GOTO    FIN_DISPLAY  
+00C0                  00377 DISPLAY_5:
+00C0   08??           00378     MOVF    NIBBLE_H3, W
+00C1   2???           00379     CALL        TABLE
+00C2   0088           00380     MOVWF   PORTD
+00C3   1686           00381     BSF PORTB, RB5
+00C4   2???           00382     GOTO         FIN_DISPLAY
+00C5                  00383 FIN_DISPLAY:
+00C5   2???           00384     CALL    TOGGLE_B0
+00C6   0008           00385     RETURN
+                      00386     
+                      00387     
+Warning[207]: Found label after column 1. (DELAY)
+00C7                  00388     DELAY
+00C7   30FF           00389     MOVLW   .255
+00C8   00??           00390     MOVWF   DEL
+00C9   0B??           00391     DECFSZ  DEL, F
+00CA   2???           00392     GOTO    $-1
+00CB   0008           00393     RETURN
+                      00394 
+                      00395     
+                      00396 ;***************************************************CONFIGURACIONES ************************************
+                            *****************************
+Warning[207]: Found label after column 1. (CONFIG_IO)
+00CC                  00397     CONFIG_IO
+                      00398   
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE  9
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                       00397   
@@ -1141,11 +1291,14 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 10
 =======
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 00CC   1683 1303      00399     BANKSEL     TRISA
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 00CE   0186           00400     CLRF                TRISB
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 00CF   0188           00401     CLRF                TRISD
+<<<<<<< HEAD
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 00D0   0187           00402     CLRF                TRISC
                       00403     
@@ -1252,11 +1405,63 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 00F4   1698           00438     BSF TXSTA, TXEN; SE HABILITA LA TRANSMISION
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 10
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00D0   0187           00402     CLRF                TRISC
+                      00403     
+00D1   1283 1303      00404     BANKSEL     PORTA
+00D3   0185           00405     CLRF                PORTA
+00D4   0187           00406     CLRF                PORTC
+00D5   0188           00407     CLRF                PORTD
+00D6   0186           00408     CLRF                PORTB
+00D7   01??           00409     CLRF                NIBBLE_H
+00D8   01??           00410     CLRF                NIBBLE_L
+                      00411     
+00D9   01??           00412     CLRF                CANAL
+00DA   01??           00413     CLRF                VAR_GENERAL1
+00DB   01??           00414     CLRF                VAR_GENERAL2
+00DC   01??           00415     CLRF                VAR_GENERAL3
+                      00416 
+                      00417 
+00DD   1683 1303      00418     BANKSEL ADCON1
+00DF   3000           00419     MOVLW B'00000000' ; JUSTIFICADO A LA IZQUIERDA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E0   009F           00420     MOVWF ADCON1           ; VDD COMO REFER ENCIA
+00E1   1683 1303      00421     BANKSEL TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E3   1405           00422     BSF TRISA, 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E4   1485           00423     BSF TRISA, 1
+00E5   1683 1703      00424     BANKSEL ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E7   1408           00425     BSF ANSEL, 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E8   1488           00426     BSF ANSEL, 1
+00E9   1283 1303      00427     BANKSEL ADCON0
+00EB   3041           00428     MOVLW B'01000001'   ;FOSC/8
+00EC   009F           00429     MOVWF ADCON0                ;AN0, On
+                      00430     
+00ED   1683 1303      00431     BANKSEL TRISA
+00EF   3019           00432     MOVLW   .25 ;PARA BAUDRATE DE 9615
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F0   0099           00433     MOVWF    SPBRG
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F1   019A           00434     CLRF    SPBRGH  
+                      00435 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F2   1518           00436     BSF TXSTA, BRGH ; HIGH SPEED DE BAUDIOS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F3   1218           00437     BCF TXSTA, SYNC;MODO ASINCRONO
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F4   1698           00438     BSF TXSTA, TXEN; SE HABILITA LA TRANSMISION
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 10
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 00F3   1698           00437     BSF TXSTA, TXEN; SE HABILITA LA TRANSMISION
@@ -1324,6 +1529,25 @@ Warning[207]: Found label after column 1. (CONFIG_INTERRUPT)
 00FD   1683 1303      00451     BANKSEL     TRISA
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F5   1318           00439     BCF TXSTA, TX9 ; SOLO 8 BITS
+00F6   1683 1703      00440     BANKSEL BAUDCTL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F8   1187           00441     BCF BAUDCTL, BRG16 ;SE USAN 8 BITS
+                      00442     
+00F9   1283 1303      00443     BANKSEL PORTA
+00FB   1798           00444     BSF RCSTA, SPEN ;PARA QUE LA SALIDA SEA EN TX   
+                      00445     
+00FC   0008           00446     RETURN
+                      00447     
+                      00448     
+Warning[207]: Found label after column 1. (CONFIG_INTERRUPT)
+00FD                  00449      CONFIG_INTERRUPT
+                      00450     
+00FD   1683 1303      00451     BANKSEL     TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 00FF   170C           00452     BSF         PIE1, ADIE
 0100   1283 1303      00453     BANKSEL     PORTA
 0102   178B           00454     BSF         INTCON, GIE
@@ -1335,6 +1559,9 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 20D4 3FFF             00460     END
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 11
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1398,7 +1625,11 @@ BRG7                              00000007
 BRG8                              00000000
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 12
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 12
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 12
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1465,7 +1696,11 @@ CCPR2L                            0000001B
 CHS0                              00000002
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 13
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 13
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 13
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1487,9 +1722,12 @@ CM2CON0                           00000108
 CM2CON1                           00000109
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 CONFIG_INTERRUPT                  000000FC
 CONFIG_IO                         000000CB
 =======
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 CONFIG_INTERRUPT                  000000FD
@@ -1540,7 +1778,11 @@ GCEN                              00000007
 GIE                               00000007
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 14
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 14
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 14
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1607,7 +1849,11 @@ NOT_DONE                          00000001
 NOT_PD                            00000003
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 15
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 15
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 15
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1674,7 +1920,11 @@ PULSR                             00000002
 PULSS                             00000003
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 16
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 16
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 16
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1741,7 +1991,11 @@ READ_WRITE                        00000002
 RP0                               00000005
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 17
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 17
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 17
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1808,7 +2062,11 @@ T1CON                             00000010
 T1GINV                            00000007
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 18
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 18
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 18
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1830,7 +2088,11 @@ T2CKPS1                           00000001
 T2CON                             00000012
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 TABLE                             00000024
+=======
+TABLE                             00000023
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 TABLE                             00000023
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1883,7 +2145,11 @@ TRISC3                            00000003
 TRISC4                            00000004
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 19
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 19
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 19
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -1950,7 +2216,11 @@ WCOL                              00000007
 WDTCON                            00000105
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 20
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 20
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 20
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -2017,7 +2287,11 @@ _DEVID1                           00002006
 _EC_OSC                           00003FFB
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 21
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 21
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 21
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
@@ -2097,6 +2371,7 @@ __16F887                          00000001
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MPASM 5.77                     PRINCIPAL.ASM   10-26-2020  11:56:28         PAGE 22
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 22
@@ -2104,16 +2379,25 @@ __16F887                          00000001
 =======
 MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 22
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+MPASM 5.77                     PRINCIPAL.ASM   10-24-2020  15:47:19         PAGE 22
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 
 
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 Errors   :     3
 Warnings :    10 reported,     0 suppressed
 Messages :    18 reported,     0 suppressed
+=======
+Errors   :     0
+Warnings :    10 reported,     0 suppressed
+Messages :    19 reported,     0 suppressed
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 Errors   :     0
 Warnings :    10 reported,     0 suppressed

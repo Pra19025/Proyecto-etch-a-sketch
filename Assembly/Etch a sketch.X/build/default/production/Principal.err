@@ -3,6 +3,7 @@ Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 31 : Found label after column 1. (NIBBLE_L3)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 80 : Using default destination of 1 (file).
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 91 : Found label after column 1. (TABLE)
 Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 92 : Using default destination of 1 (file).
@@ -34,6 +35,8 @@ Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X
 =======
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 96 : Found label after column 1. (TABLE)
 Message[305] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 97 : Using default destination of 1 (file).
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 135 : Found label after column 1. (LECTURA)
@@ -61,6 +64,9 @@ Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X
 Warning[207] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 449 : Found label after column 1. (CONFIG_INTERRUPT)
 Message[302] C:\USERS\NOELP\DOCUMENTS\GITHUB\PROYECTO 2\ASSEMBLY\ETCH A SKETCH.X\PRINCIPAL.ASM 452 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7dae519... se corrigio lo de velocidades
+=======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades
 =======
 >>>>>>> parent of 7dae519... se corrigio lo de velocidades

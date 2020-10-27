@@ -105,27 +105,12 @@ def Comunicacion():
         read = pic.readline().decode('ascii')
         print("lectura",read)
         valoresxy = read.split(",")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
         global potx
         global poty
         potx = int(valoresxy[0])
         poty = int(valoresxy[1])
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-=======
->>>>>>> parent of 7dae519... se corrigio lo de velocidades
-        
+
         print(read)
     return
 
