@@ -1,4 +1,4 @@
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  1
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (NIBBLE_L3)
 000F                  00037 X_DEC           RES 1
 0010                  00038 X_UNI           RES 1
 0011                  00039 Y_CEN           RES 1
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  2
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[207]: Found label after column 1. (RECEPCION)
 0016                  00087    RECEPCION:
 0016   1283 1303      00088     BANKSEL PORTA
 0018   081A           00089     MOVFW RCREG
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  3
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ Message[305]: Using default destination of 1 (file).
 003B   2???           00135     GOTO POP
                       00136     
 Warning[207]: Found label after column 1. (DOS)
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  4
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Warning[207]: Found label after column 1. (REINICIOADC)
                       00180     
 005E                  00181 POP:
 005E   0E??           00182     SWAPF           STATUS_TEMP, W
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  5
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Message[305]: Using default destination of 1 (file).
 Warning[207]: Found label after column 1. (LECTURA)
 000A                  00231     LECTURA:
 000A   1C9F           00232     BTFSS   ADCON0, GO
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  6
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ Message[305]: Using default destination of 1 (file).
 0031   2???           00281     GOTO YCENTENAS
                       00282    
 0032                  00283 YDECENAS:
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  7
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -411,7 +411,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00333     
 0059   08??           00334     MOVF            X_UNI, W
 005A   0099           00335     MOVWF           TXREG
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  8
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -469,8 +469,8 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
 007B                  00384         SEPARAR_NIBBLE
                       00385         
-007B   08??           00386     MOVF    X_CEN, W
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE  9
+007B   08??           00386     MOVF    PXH, W
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -478,20 +478,20 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 
 007C   00??           00387     MOVWF  NIBBLE_L
                       00388     
-007D   08??           00389     MOVF    X_DEC, W
+007D   08??           00389     MOVF    PXM, W
 007E   00??           00390     MOVWF  NIBBLE_H
                       00391     
-007F   08??           00392     MOVF    X_UNI, W
+007F   08??           00392     MOVF    PXL, W
 0080   00??           00393     MOVWF  NIBBLE_L2
                       00394     
                       00395     
-0081   08??           00396     MOVF    Y_CEN, W
+0081   08??           00396     MOVF    PYH, W
 0082   00??           00397     MOVWF  NIBBLE_H2
                       00398     
-0083   08??           00399     MOVF    Y_DEC, W
+0083   08??           00399     MOVF    PYM, W
 0084   00??           00400     MOVWF  NIBBLE_L3
                       00401     
-0085   08??           00402     MOVF    Y_UNI, W
+0085   08??           00402     MOVF    PYL, W
 0086   00??           00403     MOVWF  NIBBLE_H3
                       00404     
                       00405     
@@ -529,7 +529,7 @@ Warning[207]: Found label after column 1. (DISPLAY)
 009F   3004           00436     MOVLW   .4
 00A0   02??           00437     SUBWF   BANDERAS,W
 00A1   1903           00438     BTFSC   STATUS, Z
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 10
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -588,7 +588,7 @@ Warning[207]: Found label after column 1. (DELAY)
 00C8   00??           00488     MOVWF   DEL
 00C9   0B??           00489     DECFSZ  DEL, F
 00CA   2???           00490     GOTO    $-1
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 11
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -647,7 +647,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 00EF   1283 1303      00531     BANKSEL ADCON0
 00F1   3041           00532     MOVLW B'01000001'   ;FOSC/8
 00F2   009F           00533     MOVWF ADCON0                ;AN0, On
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 12
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -706,7 +706,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 0114   168C           00569     BSF         PIE1, RCIE
 0115   1283 1303      00570     BANKSEL     PORTA
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 13
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 13
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -719,7 +719,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 011A   0008           00575     RETURN
                       00576 
 20D4 3FFF             00577     END
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 14
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 14
 
 
 SYMBOL TABLE
@@ -778,7 +778,7 @@ BRG5                              00000005
 BRG6                              00000006
 BRG7                              00000007
 BRG8                              00000000
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 15
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 15
 
 
 SYMBOL TABLE
@@ -837,7 +837,7 @@ CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
 CHS0                              00000002
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 16
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 16
 
 
 SYMBOL TABLE
@@ -896,7 +896,7 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 17
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 17
 
 
 SYMBOL TABLE
@@ -955,7 +955,7 @@ MSK6                              00000006
 MSK7                              00000007
 NIBBLE_H                          00000001
 NIBBLE_H2                         00000007
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 18
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 18
 
 
 SYMBOL TABLE
@@ -1014,7 +1014,7 @@ PORTB                             00000006
 PORTC                             00000007
 PORTD                             00000008
 PORTE                             00000009
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 19
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 19
 
 
 SYMBOL TABLE
@@ -1073,7 +1073,7 @@ RCD8                              00000000
 RCEN                              00000003
 RCIDL                             00000006
 RCIE                              00000005
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 20
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 20
 
 
 SYMBOL TABLE
@@ -1132,7 +1132,7 @@ SSPM1                             00000001
 SSPM2                             00000002
 SSPM3                             00000003
 SSPMSK                            00000093
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 21
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 21
 
 
 SYMBOL TABLE
@@ -1191,7 +1191,7 @@ TRES                              00000041
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 22
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 22
 
 
 SYMBOL TABLE
@@ -1250,7 +1250,7 @@ TXIE                              00000004
 TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 23
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 23
 
 
 SYMBOL TABLE
@@ -1309,7 +1309,7 @@ YDECENAS                          00000032
 YUNIDADES                         0000003A
 Y_CEN                             00000011
 Y_DEC                             00000012
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 24
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 24
 
 
 SYMBOL TABLE
@@ -1368,7 +1368,7 @@ _LP_OSC                           00003FF8
 _LVP_OFF                          00002FFF
 _LVP_ON                           00003FFF
 _MAIN_PROG_0052                   00000052
-MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  9:59:56         PAGE 25
+MPASM 5.77                      PRUEBAS2.ASM   10-27-2020  10:38:40         PAGE 25
 
 
 SYMBOL TABLE

@@ -383,23 +383,23 @@ YUNIDADES:
     
         SEPARAR_NIBBLE
 	
-    MOVF    X_CEN, W
+    MOVF    PXH, W
     MOVWF  NIBBLE_L
     
-    MOVF    X_DEC, W
+    MOVF    PXM, W
     MOVWF  NIBBLE_H
     
-    MOVF    X_UNI, W
+    MOVF    PXL, W
     MOVWF  NIBBLE_L2
     
     
-    MOVF    Y_CEN, W
+    MOVF    PYH, W
     MOVWF  NIBBLE_H2
     
-    MOVF    Y_DEC, W
+    MOVF    PYM, W
     MOVWF  NIBBLE_L3
     
-    MOVF    Y_UNI, W
+    MOVF    PYL, W
     MOVWF  NIBBLE_H3
     
     
