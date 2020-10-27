@@ -1,0 +1,197 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Oct 27 02:07:57 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                 ISR_VECT       code   0x000004    program   0x0000d2
+                MAIN_PROG       code   0x00006d    program   0x00021c
+.config_2007_BUILD/DEFAULT/PRODUCTION/PRUEBAS       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/PRUEBAS       code   0x002008    program   0x000002
+                  GPR_VAR      udata   0x000020       data   0x000023
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x00017a      
+                            0x002007    0x002008      
+            380 out of 8455 program addresses used, program memory utilization is 4%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+             CAMBIO_CANAL   0x00004a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+         CONFIG_INTERRUPT   0x000171    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                CONFIG_IO   0x000139    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    DELAY   0x000134    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  DISPLAY   0x0000fb    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_0   0x000114    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_1   0x000119    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_2   0x00011e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_3   0x000123    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_4   0x000128    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_5   0x00012d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+         ENTONCES_GUARDAR   0x000029    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                   ES_DOS   0x000034    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+               ES_PRIMERO   0x00002f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  ES_TRES   0x000039    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              FIN_DISPLAY   0x000132    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      ISR   0x000007    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  LECTURA   0x000076    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     LOAD   0x000054    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     LOOP   0x00006f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      POP   0x000052    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     PUSH   0x000004    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              QUIZA_FUE_Y   0x00001d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 RECEIVER   0x00000c    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+           SEPARAR_NIBBLE   0x0000e8    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    START   0x00006d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    TABLE   0x00005a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                TOGGLE_B0   0x0000f5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                VALOR_ADC   0x00003e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                XCENTENAS   0x00007e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 XDECENAS   0x000086    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                XUNIDADES   0x00008e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                YCENTENAS   0x000096    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 YDECENAS   0x00009e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                YUNIDADES   0x0000a6    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0052   0x0000bf    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0057   0x0000c4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_005C   0x0000c9    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0061   0x0000ce    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0068   0x0000d5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_006D   0x0000da    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0072   0x0000df    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0077   0x0000e4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_007A   0x0000e7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_00CA   0x000137    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 BANDERAS   0x000023       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    CANAL   0x00002d       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 CONTADOR   0x000034       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                CONTADOR2   0x000036       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT1   0x000040       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT2   0x000041       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT3   0x000042       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      DEL   0x000020       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  ENTRADA   0x000035       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 NIBBLE_H   0x000021       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_H2   0x000027       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_H3   0x000029       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 NIBBLE_L   0x000022       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_L2   0x000026       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_L3   0x000028       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_CEN   0x000037       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_DEC   0x000038       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_UNI   0x000039       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXH   0x00003a       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXL   0x00003c       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXM   0x00003b       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYH   0x00003d       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYL   0x00003f       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYM   0x00003e       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              STATUS_TEMP   0x000024       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL1   0x00002a       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL2   0x00002b       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL3   0x00002c       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                   W_TEMP   0x000025       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_CEN   0x00002e       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_DEC   0x00002f       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_UNI   0x000030       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_CEN   0x000031       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_DEC   0x000032       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_UNI   0x000033       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     PUSH   0x000004    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      ISR   0x000007    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 RECEIVER   0x00000c    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              QUIZA_FUE_Y   0x00001d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+         ENTONCES_GUARDAR   0x000029    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+               ES_PRIMERO   0x00002f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                   ES_DOS   0x000034    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  ES_TRES   0x000039    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                VALOR_ADC   0x00003e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             CAMBIO_CANAL   0x00004a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      POP   0x000052    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     LOAD   0x000054    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    TABLE   0x00005a    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    START   0x00006d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     LOOP   0x00006f    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  LECTURA   0x000076    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                XCENTENAS   0x00007e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 XDECENAS   0x000086    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                XUNIDADES   0x00008e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                YCENTENAS   0x000096    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 YDECENAS   0x00009e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                YUNIDADES   0x0000a6    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0052   0x0000bf    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0057   0x0000c4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_005C   0x0000c9    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0061   0x0000ce    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0068   0x0000d5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_006D   0x0000da    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0072   0x0000df    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_0077   0x0000e4    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_007A   0x0000e7    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+           SEPARAR_NIBBLE   0x0000e8    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                TOGGLE_B0   0x0000f5    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  DISPLAY   0x0000fb    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_0   0x000114    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_1   0x000119    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_2   0x00011e    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_3   0x000123    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_4   0x000128    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                DISPLAY_5   0x00012d    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              FIN_DISPLAY   0x000132    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    DELAY   0x000134    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+          _MAIN_PROG_00CA   0x000137    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                CONFIG_IO   0x000139    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+         CONFIG_INTERRUPT   0x000171    program     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      DEL   0x000020       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 NIBBLE_H   0x000021       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 NIBBLE_L   0x000022       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 BANDERAS   0x000023       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+              STATUS_TEMP   0x000024       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                   W_TEMP   0x000025       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_L2   0x000026       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_H2   0x000027       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_L3   0x000028       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                NIBBLE_H3   0x000029       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL1   0x00002a       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL2   0x00002b       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+             VAR_GENERAL3   0x00002c       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    CANAL   0x00002d       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_CEN   0x00002e       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_DEC   0x00002f       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    X_UNI   0x000030       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_CEN   0x000031       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_DEC   0x000032       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                    Y_UNI   0x000033       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                 CONTADOR   0x000034       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                  ENTRADA   0x000035       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                CONTADOR2   0x000036       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_CEN   0x000037       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_DEC   0x000038       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                PIXEL_UNI   0x000039       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXH   0x00003a       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXM   0x00003b       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PXL   0x00003c       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYH   0x00003d       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYM   0x00003e       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                      PYL   0x00003f       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT1   0x000040       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT2   0x000041       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+                     DAT3   0x000042       data     static C:\Users\noelp\Documents\GitHub\Proyecto 2\Assembly\PRUEBAS2-ETCH.X\PRUEBAS2.asm
+
+

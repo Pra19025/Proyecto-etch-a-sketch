@@ -1,4 +1,4 @@
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  1
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (NIBBLE_L3)
 000F                  00037 X_DEC           RES 1
 0010                  00038 X_UNI           RES 1
 0011                  00039 Y_CEN           RES 1
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  2
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0018   1D03           00090     BTFSS   STATUS, Z
 0019   2???           00091     GOTO    LOWX
                       00092     
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  3
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ Warning[207]: Found label after column 1. (MEDIUMY)
 003A   08??           00138     MOVFW   ENTRADA
 003B   00??           00139     MOVWF   PYM
 003C   2???           00140     GOTO    TRANSMISION
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  4
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Message[305]: Using default destination of 1 (file).
                       00187     ;     PBAFGECD
 005E   3477           00188     RETLW   B'01110111' ;0
 005F   3442           00189     RETLW   B'01000010' ;1
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  5
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Message[305]: Using default destination of 1 (file).
 0012   02??           00237     SUBWF   VAR_GENERAL1, W
 0013   1803           00238     BTFSC    STATUS, C
 0014   00??           00239     MOVWF    VAR_GENERAL1
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  6
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 003D   1803           00290     BTFSC   STATUS, C
 003E   0A??           00291     INCF        Y_UNI, F  
 003F   1803           00292     BTFSC       STATUS, C
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  7
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -411,7 +411,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0067   1E0C           00342     BTFSS           PIR1, TXIF
 0068   2???           00343     GOTO            $-1
 0069   2???           00344     CALL        DELAY
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  8
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -470,7 +470,7 @@ Warning[207]: Found label after column 1. (SEPARAR_NIBBLE)
                       00393     
 0085   08??           00394     MOVF    Y_UNI, W
 0086   00??           00395     MOVWF  NIBBLE_H3
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE  9
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -529,7 +529,7 @@ Warning[207]: Found label after column 1. (DISPLAY)
 00AD   2???           00445     CALL    TABLE
 00AE   0088           00446     MOVWF   PORTD
 00AF   1486           00447     BSF     PORTB, RD1
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 10
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -588,7 +588,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 00D1   0087           00493     MOVWF               TRISC
                       00494     
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 11
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -647,7 +647,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 00FB   1318           00535     BCF TXSTA, TX9 ; SOLO 8 BITS
 00FC   1683 1703      00536     BANKSEL BAUDCTL
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 12
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -678,7 +678,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 010D   0008           00555     RETURN
                       00556 
 20D4 3FFF             00557     END
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 13
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 13
 
 
 SYMBOL TABLE
@@ -737,7 +737,7 @@ BRG5                              00000005
 BRG6                              00000006
 BRG7                              00000007
 BRG8                              00000000
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 14
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 14
 
 
 SYMBOL TABLE
@@ -796,7 +796,7 @@ CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
 CHS0                              00000002
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 15
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 15
 
 
 SYMBOL TABLE
@@ -855,7 +855,7 @@ FERR                              00000002
 FIN_DISPLAY                       000000C5
 FSR                               00000004
 FVREN                             00000000
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 16
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 16
 
 
 SYMBOL TABLE
@@ -914,7 +914,7 @@ NIBBLE_H                          00000001
 NIBBLE_H2                         00000007
 NIBBLE_H3                         00000009
 NIBBLE_L                          00000002
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 17
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 17
 
 
 SYMBOL TABLE
@@ -973,7 +973,7 @@ PORTD                             00000008
 PORTE                             00000009
 PR2                               00000092
 PRSEN                             00000007
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 18
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 18
 
 
 SYMBOL TABLE
@@ -1032,7 +1032,7 @@ RCEN                              00000003
 RCIDL                             00000006
 RCIE                              00000005
 RCIF                              00000005
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 19
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 19
 
 
 SYMBOL TABLE
@@ -1091,7 +1091,7 @@ SSPMSK                            00000093
 SSPOV                             00000006
 SSPSTAT                           00000094
 START                             00000000
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 20
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 20
 
 
 SYMBOL TABLE
@@ -1150,7 +1150,7 @@ TRISA1                            00000001
 TRISA2                            00000002
 TRISA3                            00000003
 TRISA4                            00000004
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 21
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 21
 
 
 SYMBOL TABLE
@@ -1209,7 +1209,7 @@ TXSTA                             00000098
 UA                                00000001
 ULPWUE                            00000005
 ULPWUIE                           00000002
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 22
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 22
 
 
 SYMBOL TABLE
@@ -1268,7 +1268,7 @@ _BOR21V                           00003EFF
 _BOR40V                           00003FFF
 _BOR4V_BOR21V                     00003EFF
 _BOR4V_BOR40V                     00003FFF
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 23
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 23
 
 
 SYMBOL TABLE
@@ -1327,7 +1327,7 @@ _MAIN_PROG_0061                   00000061
 _MAIN_PROG_0068                   00000068
 _MAIN_PROG_006D                   0000006D
 _MAIN_PROG_0072                   00000072
-MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  1:22:12         PAGE 24
+MPASM 5.77               PRUEBAPROYECTO2.ASM   10-27-2020  2:00:09         PAGE 24
 
 
 SYMBOL TABLE
